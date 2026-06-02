@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<title>A-Frames in Paradise – Broschüre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --green:#3D6B4F; --green-lt:#5A8A6A; --green-dk:#1A3028; --green-bg:#EDF4EF;
+    --gold:#B8962E; --gold-lt:#D4AF55; --gold-pale:#F0D97A;
+    --ink:#1A1A18; --ink-soft:#4A4A46; --ink-muted:#8A8A84;
+    --bg:#F9F8F5; --white:#FFFFFF; --border:#E2DDD4;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  html,body{background:#fff;}
+  body{font-family:var(--sans);color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact;line-height:1.6;}
+  img{display:block;}
+
+  .page{
+    width:210mm;height:297mm;position:relative;overflow:hidden;
+    background:var(--bg);page-break-after:always;
+  }
+  .page:last-child{page-break-after:auto;}
+
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.16;}
+
+  /* ─── shared bits ─── */
+  .eyebrow{
+    font-size:8pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--green);display:flex;align-items:center;gap:7px;margin-bottom:6px;
+  }
+  .eyebrow::before{content:'';width:24px;height:2px;background:var(--gold);display:inline-block;}
+  .eyebrow-gold{color:var(--gold-lt);}
+  .eyebrow-gold::before{background:var(--gold-lt);}
+  .divider{width:52px;height:3px;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:2px;margin:10px 0 14px;}
+  .pad{padding:17mm 16mm;}
+
+  .pgnum{
+    position:absolute;bottom:9mm;right:16mm;font-size:8pt;color:var(--ink-muted);
+    letter-spacing:.1em;
+  }
+  .pgfoot{
+    position:absolute;bottom:9mm;left:16mm;font-size:7.5pt;color:var(--ink-muted);
+    letter-spacing:.12em;text-transform:uppercase;
+  }
+
+  /* ─── COVER (page 1) ─── */
+  .cover{background:var(--green-dk);}
+  .cover__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .cover__veil{position:absolute;inset:0;
+    background:linear-gradient(to bottom,rgba(10,22,14,.72) 0%,rgba(10,22,14,.34) 40%,rgba(10,22,14,.93) 100%);}
+  .cover__in{position:absolute;inset:0;display:flex;flex-direction:column;padding:20mm 18mm;color:#fff;}
+  .cover__brand{display:flex;align-items:center;gap:11px;}
+  .cover__logo{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5);}
+  .cover__brandtxt{font-family:var(--serif);font-size:15pt;font-weight:700;}
+  .cover__badge{
+    align-self:flex-start;margin-top:auto;margin-bottom:14px;
+    background:rgba(184,150,46,.24);border:1px solid rgba(184,150,46,.55);
+    color:var(--gold-pale);font-size:8pt;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;padding:7px 15px;border-radius:40px;
+  }
+  .cover h1{font-size:38pt;color:#fff;margin-bottom:12px;text-shadow:0 2px 24px rgba(0,0,0,.5);}
+  .cover h1 em{font-style:italic;color:var(--gold-pale);}
+  .cover__sub{font-size:11.5pt;color:rgba(255,255,255,.9);max-width:135mm;line-height:1.7;margin-bottom:20px;}
+  .cover__sub strong{color:var(--gold-pale);}
+  .cover__price{
+    display:flex;gap:0;background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.22);border-radius:12px;overflow:hidden;
+    align-self:flex-start;
+  }
+  .cover__price > div{padding:14px 22px;}
+  .cover__price > div + div{border-left:1px solid rgba(255,255,255,.18);}
+  .cp-num{font-family:var(--serif);font-size:17pt;font-weight:700;line-height:1;}
+  .cp-num.sm{font-size:13pt;}
+  .cp-lbl{font-size:7.5pt;color:rgba(255,255,255,.65);margin-top:5px;letter-spacing:.04em;}
+  .cover__foot{
+    margin-top:16px;font-size:8pt;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.55);
+  }
+
+  /* ─── intro / generic heading block ─── */
+  .lead{font-size:10pt;color:var(--ink-soft);line-height:1.7;max-width:150mm;}
+  h2.sec{font-size:23pt;}
+  h2.sec .accent{color:var(--green);font-style:italic;}
+
+  /* ─── stat strip ─── */
+  .stats{display:flex;gap:0;margin:14px 0 0;border:1px solid var(--border);border-radius:11px;overflow:hidden;background:var(--white);}
+  .stats > div{flex:1;padding:13px 8px;text-align:center;}
+  .stats > div + div{border-left:1px solid var(--border);}
+  .stat-num{font-family:var(--serif);font-size:16pt;font-weight:700;color:var(--green);line-height:1;}
+  .stat-num .g{color:var(--gold);}
+  .stat-lbl{font-size:7pt;color:var(--ink-muted);margin-top:5px;line-height:1.35;}
+
+  /* ─── value prop cards ─── */
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px;}
+  .vcard{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:14px 15px;position:relative;}
+  .vcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:11px 11px 0 0;}
+  .vcard__ic{width:38px;height:38px;background:var(--green-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:9px;}
+  .vcard h3{font-size:11.5pt;margin-bottom:4px;}
+  .vcard p{font-size:8.4pt;color:var(--ink-soft);line-height:1.6;}
+
+  /* ─── image helpers ─── */
+  .imground{border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.13);}
+  .imground img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* ─── house page ─── */
+  .house-hero{height:74mm;border-radius:12px;overflow:hidden;position:relative;box-shadow:0 10px 28px rgba(0,0,0,.16);}
+  .house-hero img{width:100%;height:100%;object-fit:cover;}
+  .house-hero .tag{position:absolute;bottom:11px;left:11px;background:rgba(255,255,255,.95);color:var(--green);font-size:8pt;font-weight:600;padding:6px 11px;border-radius:6px;}
+  .twin{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:9px;}
+  .twin .imground{height:42mm;}
+  .specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;}
+  .spec{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:9px;align-items:center;}
+  .spec .si{font-size:16px;}
+  .spec .sl{font-size:6.8pt;color:var(--ink-muted);font-weight:600;text-transform:uppercase;letter-spacing:.07em;}
+  .spec .sv{font-size:9.5pt;font-weight:600;margin-top:1px;}
+  .floors{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;}
+  .floor{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:13px 15px;}
+  .floor .flvl{font-size:7pt;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--green);}
+  .floor h4{font-size:11pt;font-family:var(--serif);margin:3px 0 8px;}
+  .floor ul{list-style:none;}
+  .floor li{font-size:8.6pt;color:var(--ink-soft);padding:3px 0;display:flex;gap:7px;}
+  .floor li::before{content:'✓';color:var(--green);font-weight:700;font-size:8pt;}
+
+  /* ─── included list ─── */
+  .incl{list-style:none;margin:12px 0;}
+  .incl li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:9pt;color:var(--ink-soft);}
+  .incl li:last-child{border:none;}
+  .incl .ic{font-size:13px;}
+  .incl strong{color:var(--ink);}
+  .infobox{background:var(--green-bg);border:1px solid #C2D9C8;border-radius:9px;padding:11px 14px;font-size:8.6pt;color:var(--green);}
+  .infobox strong{font-weight:700;}
+
+  /* ─── lake steps ─── */
+  .lake{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px;}
+  .lstep .lim{height:38mm;border-radius:9px;overflow:hidden;position:relative;box-shadow:0 6px 16px rgba(0,0,0,.16);}
+  .lstep .lim img{width:100%;height:100%;object-fit:cover;}
+  .lstep .lnum{position:absolute;top:-7px;left:-5px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;font-family:var(--serif);font-size:11pt;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .lstep h4{font-size:9pt;font-family:var(--serif);margin:8px 0 2px;}
+  .lstep p{font-size:7.5pt;color:var(--ink-muted);line-height:1.5;}
+
+  /* ─── price page (dark) ─── */
+  .dark{background:var(--green-dk);color:#fff;}
+  .dark h2.sec{color:#fff;}
+  .dark .lead{color:rgba(255,255,255,.72);}
+  .pcompare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  .pcard{border-radius:13px;padding:18px 19px;position:relative;}
+  .pcard-a{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);}
+  .pcard-b{background:linear-gradient(150deg,rgba(61,107,79,.5),rgba(61,107,79,.15));border:1px solid var(--green-lt);}
+  .pcard .ptag{position:absolute;top:0;right:18px;background:var(--green);color:#fff;font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:0 0 7px 7px;}
+  .pcard .plbl{font-size:7.5pt;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:7px;}
+  .pcard .pamt{font-family:var(--serif);font-size:21pt;font-weight:700;line-height:1;}
+  .pcard .pamt.muted{color:rgba(255,255,255,.55);}
+  .pcard .pamt.green{color:#7CDFA4;}
+  .pcard .psub{font-size:8pt;color:rgba(255,255,255,.5);margin:5px 0 11px;}
+  .pcard ul{list-style:none;}
+  .pcard li{font-size:8.2pt;color:rgba(255,255,255,.78);padding:4px 0;display:flex;gap:7px;border-bottom:1px solid rgba(255,255,255,.07);}
+  .pcard li:last-child{border:none;}
+  .chk{color:#7CDFA4;font-weight:700;}
+  .crs{color:rgba(255,255,255,.32);font-weight:700;}
+  .savings{margin-top:14px;background:linear-gradient(135deg,rgba(184,150,46,.22),rgba(184,150,46,.06));border:1px solid rgba(184,150,46,.38);border-radius:11px;padding:14px 20px;text-align:center;}
+  .savings p{font-size:9pt;color:rgba(255,255,255,.72);}
+  .savings strong{font-family:var(--serif);font-size:15pt;color:var(--gold-pale);display:block;margin-top:4px;}
+  .breakdown{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px;}
+  .bd{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:9px;padding:12px 13px;}
+  .bd .bl{font-size:7pt;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+  .bd .bv{font-family:var(--serif);font-size:12pt;font-weight:700;color:#fff;}
+  .bd .bn{font-size:6.8pt;color:rgba(255,255,255,.4);margin-top:3px;}
+
+  /* ─── plots ─── */
+  .plotmap{height:78mm;border-radius:12px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.15);margin-top:14px;}
+  .plotmap img{width:100%;height:100%;object-fit:cover;}
+  .pbadges{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:13px;}
+  .pbadge{background:var(--green-bg);border:1px solid #C2D9C8;border-radius:9px;padding:10px 4px;text-align:center;}
+  .pbadge .pn{font-family:var(--serif);font-size:15pt;font-weight:700;color:var(--green);}
+  .pbadge .ps{font-size:6.4pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-top:2px;}
+  .pfacts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px;}
+  .pfacts li{list-style:none;display:flex;gap:9px;align-items:center;font-size:9pt;color:var(--ink-soft);background:var(--white);border:1px solid var(--border);border-radius:9px;padding:10px 13px;}
+  .pfacts .ic{font-size:14px;}
+
+  /* ─── location ─── */
+  .locmap{height:62mm;border-radius:12px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.15);margin-top:14px;}
+  .locmap img{width:100%;height:100%;object-fit:cover;}
+  .dists{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px;}
+  .dist{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;}
+  .dist .dk{font-family:var(--serif);font-size:15pt;font-weight:700;color:var(--green);line-height:1;}
+  .dist .dl{font-size:7.4pt;color:var(--ink-muted);margin-top:4px;}
+  .surround{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;}
+  .scard{background:var(--white);border:1px solid var(--border);border-radius:11px;overflow:hidden;}
+  .scard .sim{height:34mm;}
+  .scard .sim img{width:100%;height:100%;object-fit:cover;}
+  .scard .sb{padding:10px 12px;}
+  .scard h4{font-size:9.5pt;font-family:var(--serif);margin-bottom:3px;}
+  .scard p{font-size:7.6pt;color:var(--ink-muted);line-height:1.5;}
+
+  /* ─── process timeline ─── */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
+  .step{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:13px 13px;text-align:center;}
+  .step .sd{width:34px;height:34px;border-radius:50%;background:var(--white);border:2px solid var(--green);color:var(--green);font-family:var(--serif);font-size:12pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
+  .step:last-child .sd{background:var(--gold);border-color:var(--gold);color:#fff;}
+  .step h4{font-size:9.2pt;font-family:var(--serif);margin-bottom:3px;}
+  .step p{font-size:7.5pt;color:var(--ink-muted);line-height:1.5;}
+
+  /* ─── contact page (dark) ─── */
+  .contact{background:linear-gradient(155deg,#18291E,#2D4A39 55%,#18291E);color:#fff;}
+  .contact .cwrap{padding:24mm 18mm;display:flex;flex-direction:column;height:100%;}
+  .contact h2{font-size:27pt;color:#fff;margin-bottom:12px;}
+  .contact h2 em{font-style:italic;color:var(--gold-pale);}
+  .contact .clead{font-size:10.5pt;color:rgba(255,255,255,.74);line-height:1.7;max-width:150mm;}
+  .ccards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin:22px 0;}
+  .ccard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:12px;padding:16px 15px;}
+  .ccard .cic{width:40px;height:40px;background:rgba(61,107,79,.5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:9px;}
+  .ccard .cl{font-size:7pt;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:4px;}
+  .ccard .cv{font-size:9.5pt;font-weight:600;color:#fff;word-break:break-word;}
+  .ccard .cv a{color:#7CDFA4;text-decoration:none;}
+  .ccard .cn{font-size:7.4pt;color:rgba(255,255,255,.45);margin-top:4px;}
+  .urg{background:linear-gradient(135deg,rgba(184,150,46,.22),rgba(184,150,46,.06));border:1px solid rgba(184,150,46,.4);border-radius:12px;padding:16px 22px;}
+  .urg p{font-size:9.5pt;color:rgba(255,255,255,.82);}
+  .urg strong{color:var(--gold-pale);}
+  .contact__price{display:flex;gap:0;margin-top:22px;border:1px solid rgba(255,255,255,.18);border-radius:12px;overflow:hidden;}
+  .contact__price > div{flex:1;padding:15px 18px;text-align:center;}
+  .contact__price > div + div{border-left:1px solid rgba(255,255,255,.16);}
+  .contact__brand{display:flex;align-items:center;gap:11px;margin-top:auto;padding-top:20px;}
+  .contact__brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.4);}
+  .contact__brand .bt{font-family:var(--serif);font-size:13pt;font-weight:700;}
+  .contact__brand .bs{font-size:7.6pt;color:rgba(255,255,255,.5);margin-top:2px;letter-spacing:.04em;}
+</style>
+</head>
+<body>
+
+<!-- ══════════ PAGE 1 · COVER ══════════ -->
+<section class="page cover">
+  <img class="cover__img" src="images/hero.jpg" alt="" />
+  <div class="cover__veil"></div>
+  <div class="cover__in">
+    <div class="cover__brand">
+      <img class="cover__logo" src="images/logo.jpg" alt="" />
+      <span class="cover__brandtxt">A-Frames in Paradise</span>
+    </div>
+    <div class="cover__badge">🌿 Pranburi · Thailand · Eco-Luxus am See</div>
+    <h1>Dein <em>Paradies</em><br>am See</h1>
+    <p class="cover__sub">Ein komplettes A-Frame Eco-Luxus-Haus (120&nbsp;m²) auf 800&nbsp;m² privatem
+      Seegrundstück in Pranburi – schlüsselfertig in nur <strong>2,5&nbsp;Monaten</strong>.</p>
+    <div class="cover__price">
+      <div>
+        <div class="cp-num">2.500.000 THB</div>
+        <div class="cp-lbl">Gesamtpreis inkl. Grundstück</div>
+      </div>
+      <div>
+        <div class="cp-num sm">≈ 66.000 €</div>
+        <div class="cp-lbl">Schlüsselfertig · All-in</div>
+      </div>
+      <div>
+        <div class="cp-num sm">2,5 Monate</div>
+        <div class="cp-lbl">Bis zum Einzug</div>
+      </div>
+    </div>
+    <div class="cover__foot">Exklusive Broschüre · Anlage AIP 2 · Prachuap Khiri Khan</div>
+  </div>
+</section>
+
+<!-- ══════════ PAGE 2 · WARUM ══════════ -->
+<section class="page">
+  <div class="pad">
+    <p class="eyebrow">Warum A-Frames in Paradise?</p>
+    <h2 class="sec">Mehr als ein Zuhause.<br><span class="accent">Eine kluge Entscheidung.</span></h2>
+    <div class="divider"></div>
+    <p class="lead">In Zeiten globaler Unsicherheit und steigender Inflation bietet ein Hard Asset
+      in Thailand eine der attraktivsten Schutzstrategien für Expats und internationale Investoren –
+      ein reales Zuhause mit echtem Wert.</p>
+
+    <div class="stats">
+      <div><div class="stat-num">120 m²</div><div class="stat-lbl">Wohnfläche<br>auf 2 Ebenen</div></div>
+      <div><div class="stat-num">800 m²</div><div class="stat-lbl">Privates<br>Seegrundstück</div></div>
+      <div><div class="stat-num">66.000 €</div><div class="stat-lbl">Gesamtpreis<br>schlüsselfertig</div></div>
+      <div><div class="stat-num">2,5</div><div class="stat-lbl">Monate bis<br>zum Einzug</div></div>
+      <div><div class="stat-num"><span class="g">–62 %</span></div><div class="stat-lbl">Unter Markt-<br>durchschnitt</div></div>
+    </div>
+
+    <div class="vgrid">
+      <div class="vcard">
+        <div class="vcard__ic">🏛️</div>
+        <h3>Sicherer Hard Asset</h3>
+        <p>Immobilien schützen Kapital verlässlich. Während Bargeld an Kaufkraft verliert,
+          bewahrt und steigert Grund und Boden seinen Wert – besonders in einem Wachstumsmarkt
+          wie Thailand.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__ic">📈</div>
+        <h3>Wachsender Markt</h3>
+        <p>Pranburi und das Hua-Hin-Dreieck entwickeln sich rasant. Steigende Touristenzahlen
+          und eine wachsende Expat-Gemeinschaft treiben Nachfrage und Immobilienpreise.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__ic">🌴</div>
+        <h3>Tropische Freiheit</h3>
+        <p>Leben, wo andere Urlaub machen. Nationalpark, privater See und Strände direkt
+          vor der Tür – ruhig, privat, außergewöhnlich.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard__ic">🔑</div>
+        <h3>Komplett schlüsselfertig</h3>
+        <p>Kein Baustress, keine versteckten Kosten. Du erhältst dein Traumhaus inklusive
+          Grundstück und allen Anschlüssen – bezugsfertig in 2,5 Monaten.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:16px">
+      <p class="eyebrow">Der Ablauf</p>
+      <div class="steps">
+        <div class="step"><div class="sd">1</div><h4>Beratung &amp; Auswahl</h4><p>Wünsche besprechen, Seegrundstück gemeinsam wählen.</p></div>
+        <div class="step"><div class="sd">2</div><h4>Vertrag &amp; Festpreis</h4><p>Transparenter Festpreis, klare Verträge inkl. Nachweisen.</p></div>
+        <div class="step"><div class="sd">3</div><h4>Bau in 2,5 Monaten</h4><p>Schlüsselfertig – Bäder, Küche, alle Anschlüsse inklusive.</p></div>
+        <div class="step"><div class="sd">4</div><h4>Schlüsselübergabe</h4><p>Adresse &amp; gelbes Hausbuch – Einzug mit dem Koffer.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="pgfoot">A-Frames in Paradise</div>
+  <div class="pgnum">02</div>
+</section>
+
+<!-- ══════════ PAGE 3 · DAS HAUS ══════════ -->
+<section class="page">
+  <div class="pad">
+    <p class="eyebrow">Das Haus</p>
+    <h2 class="sec">A-Frame Eco-Luxus auf zwei Ebenen</h2>
+    <div class="divider"></div>
+    <p class="lead">Das ikonische A-Frame Design kombiniert nordisches Architekturerbe mit
+      tropischem Eco-Luxus: natürliche Materialien, raumhohe Glasfronten, hohe Decken und
+      eine Terrasse mit Seeblick – auf 120&nbsp;m² Wohnfläche.</p>
+
+    <div class="house-hero" style="margin-top:13px">
+      <img src="images/house-1.jpg" alt="A-Frame Haus" />
+      <div class="tag">✓ Schlüsselfertig in 2,5 Monaten</div>
+    </div>
+    <div class="twin">
+      <div class="imground"><img src="images/house-2.jpg" alt="Seitenansicht" /></div>
+      <div class="imground"><img src="images/aerial.jpg" alt="Luftaufnahme" /></div>
+    </div>
+
+    <div class="specs">
+      <div class="spec"><span class="si">📐</span><div><div class="sl">Wohnfläche</div><div class="sv">120 m²</div></div></div>
+      <div class="spec"><span class="si">🏠</span><div><div class="sl">Bauweise</div><div class="sv">2 Ebenen, A-Frame</div></div></div>
+      <div class="spec"><span class="si">🛏</span><div><div class="sl">Schlafzimmer</div><div class="sv">1 + Loft-Option</div></div></div>
+      <div class="spec"><span class="si">🚿</span><div><div class="sl">Badezimmer</div><div class="sv">2 (EG + OG)</div></div></div>
+    </div>
+
+    <div class="floors">
+      <div class="floor">
+        <div class="flvl">Erdgeschoss</div>
+        <h4>Wohnen &amp; Leben</h4>
+        <ul>
+          <li>Offenes Wohnzimmer</li>
+          <li>Moderne Küche</li>
+          <li>Vollbad / WC</li>
+          <li>Terrasse zum See</li>
+        </ul>
+      </div>
+      <div class="floor">
+        <div class="flvl">Obergeschoss</div>
+        <h4>Schlafen &amp; Genießen</h4>
+        <ul>
+          <li>Schlafzimmer · Seeblick</li>
+          <li>En-Suite-Badezimmer</li>
+          <li>Private Balkon-Terrasse</li>
+          <li>Panorama-Aussicht</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pgfoot">Das Haus</div>
+  <div class="pgnum">03</div>
+</section>
+
+<!-- ══════════ PAGE 4 · GRUNDSTÜCK & SEE ══════════ -->
+<section class="page">
+  <div class="pad">
+    <p class="eyebrow">Das Grundstück</p>
+    <h2 class="sec">800 m² am privaten See – komplett erschlossen</h2>
+    <div class="divider"></div>
+    <p class="lead">Direkter Zugang zum hauseigenen See, maximale Privatsphäre und vollständig
+      erschlossen. Der Grundstückswert allein beträgt 1,5&nbsp;Mio.&nbsp;THB – inklusive aller
+      Anschlüsse.</p>
+
+    <ul class="incl">
+      <li><span class="ic">🌊</span><div><strong>Seegrundstück 800 m²</strong> – Direktzugang, Panorama-Ausblick</div></li>
+      <li><span class="ic">⚡</span><div><strong>Stromanschluss</strong> – vollständig installiert</div></li>
+      <li><span class="ic">💧</span><div><strong>Frischwasseranschluss</strong> – staatliches Wassernetz</div></li>
+      <li><span class="ic">📶</span><div><strong>Internet / Glasfaser</strong> – Hochgeschwindigkeit vorhanden</div></li>
+      <li><span class="ic">🛣️</span><div><strong>Befestigte Privatzufahrt</strong> – eigene, gesicherte Zufahrtsstraße</div></li>
+    </ul>
+    <div class="infobox"><strong>Grundstückspreis:</strong> 1.500.000 THB (≈ 40.000 €) –
+      inkl. aller Erschließungskosten</div>
+
+    <div style="margin-top:18px">
+      <p class="eyebrow eyebrow-gold">Das Extra</p>
+      <h2 class="sec" style="font-size:19pt">Dein eigener See – vom Bagger zum Paradies</h2>
+      <p class="lead" style="margin-top:6px">Jedes Grundstück grenzt direkt an einen privaten See.
+        Wir legen ihn von Grund auf an – kristallklares Wasser vor der Bergkulisse von
+        Khao Sam Roi Yot.</p>
+      <div class="lake">
+        <div class="lstep">
+          <div class="lim"><div class="lnum">1</div><img src="images/lake-excavator.jpg" alt="" /></div>
+          <h4>Aushub &amp; Uferlinie</h4>
+          <p>Der Bagger formt Becken und Uferlinie deines Sees.</p>
+        </div>
+        <div class="lstep">
+          <div class="lim"><div class="lnum">2</div><img src="images/lake-aerial.jpg" alt="" /></div>
+          <h4>Der See füllt sich</h4>
+          <p>Frisches Wasser füllt das Becken vor den Bergen.</p>
+        </div>
+        <div class="lstep">
+          <div class="lim"><div class="lnum">3</div><img src="images/lake-green.jpg" alt="" /></div>
+          <h4>Kristallklares Wasser</h4>
+          <p>Ein ruhiger See zum Schwimmen, Angeln, Entspannen.</p>
+        </div>
+        <div class="lstep">
+          <div class="lim"><div class="lnum">4</div><img src="images/lake-sun.jpg" alt="" /></div>
+          <h4>Dein Sonnenuntergang</h4>
+          <p>Goldenes Licht und Bergpanorama jeden Abend.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pgfoot">Grundstück &amp; See</div>
+  <div class="pgnum">04</div>
+</section>
+
+<!-- ══════════ PAGE 5 · PREISVERGLEICH ══════════ -->
+<section class="page dark">
+  <div class="pad">
+    <p class="eyebrow eyebrow-gold">Preisvergleich</p>
+    <h2 class="sec">62 % unter Marktpreis – ein historisch seltenes Angebot</h2>
+    <div class="divider"></div>
+    <p class="lead">Ø Hauspreis Pranburi: <strong style="color:#F0D97A">6.495.817 THB</strong>.
+      Unser Komplettangebot inkl. Seegrundstück:
+      <strong style="color:#7CDFA4">2.500.000 THB</strong>.</p>
+
+    <div class="pcompare">
+      <div class="pcard pcard-a">
+        <div class="plbl">Regionaler Marktdurchschnitt</div>
+        <div class="pamt muted">6.495.817 THB</div>
+        <div class="psub">≈ 171.000 € (Ø Pranburi)</div>
+        <ul>
+          <li><span class="crs">✗</span><span>Oft ohne Erschließung</span></li>
+          <li><span class="crs">✗</span><span>12–18 Monate Bauzeit</span></li>
+          <li><span class="crs">✗</span><span>Keine Seelage garantiert</span></li>
+          <li><span class="crs">✗</span><span>Hohe Nebenkosten 10–15 %</span></li>
+        </ul>
+      </div>
+      <div class="pcard pcard-b">
+        <div class="ptag">⭐ Unser Angebot</div>
+        <div class="plbl" style="margin-top:8px">A-Frames in Paradise</div>
+        <div class="pamt green">2.500.000 THB</div>
+        <div class="psub">≈ 66.000 € · All-inclusive</div>
+        <ul>
+          <li><span class="chk">✓</span><span>800 m² Seegrundstück inklusive</span></li>
+          <li><span class="chk">✓</span><span>Strom, Wasser, Internet</span></li>
+          <li><span class="chk">✓</span><span>120 m², 2 Etagen, A-Frame</span></li>
+          <li><span class="chk">✓</span><span>Schlüsselfertig in 2,5 Monaten</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="savings">
+      <p>Du sparst gegenüber dem regionalen Marktdurchschnitt</p>
+      <strong>3.995.817 THB · über 105.000 € · 62 % unter Marktpreis</strong>
+    </div>
+
+    <div class="breakdown">
+      <div class="bd"><div class="bl">Grundstück (800 m²)</div><div class="bv">1.500.000 THB</div><div class="bn">inkl. aller Anschlüsse</div></div>
+      <div class="bd"><div class="bl">A-Frame Haus (120 m²)</div><div class="bv">1.000.000 THB</div><div class="bn">schlüsselfertig gebaut</div></div>
+      <div class="bd"><div class="bl">Gesamtpreis All-in</div><div class="bv" style="color:#7CDFA4">2.500.000 THB</div><div class="bn">≈ 66.000 € · fester Preis</div></div>
+      <div class="bd"><div class="bl">Bezugsfertig ab</div><div class="bv">2,5 Monate</div><div class="bn">nach Vertragsunterzeichnung</div></div>
+    </div>
+
+    <div class="infobox" style="margin-top:16px;background:rgba(184,150,46,.14);border-color:rgba(184,150,46,.4);color:#F0D97A">
+      <strong>⚠ Achtung:</strong> Baukosten steigen ab Ende Juli 2026 um 3–5 % pro Quartal.
+      Der aktuelle Festpreis ist zeitlich begrenzt.
+    </div>
+  </div>
+  <div class="pgfoot" style="color:rgba(255,255,255,.45)">Preisvergleich</div>
+  <div class="pgnum" style="color:rgba(255,255,255,.45)">05</div>
+</section>
+
+<!-- ══════════ PAGE 6 · DIE GRUNDSTÜCKE ══════════ -->
+<section class="page">
+  <div class="pad">
+    <p class="eyebrow">Die Grundstücke</p>
+    <h2 class="sec">6 Seegrundstücke – nur noch 6 verfügbar</h2>
+    <div class="divider"></div>
+    <p class="lead">Sichere dir eines von sechs privaten Grundstücken in der Anlage AIP 2 –
+      jedes mit direktem Seezugang und Blick auf Khao Sam Roi Yot.</p>
+
+    <div class="plotmap"><img src="images/plotmap.jpg" alt="Lageplan AIP 2" /></div>
+
+    <div class="pbadges">
+      <div class="pbadge"><div class="pn">1</div><div class="ps">Verfügbar</div></div>
+      <div class="pbadge"><div class="pn">2</div><div class="ps">Verfügbar</div></div>
+      <div class="pbadge"><div class="pn">3</div><div class="ps">Verfügbar</div></div>
+      <div class="pbadge"><div class="pn">4</div><div class="ps">Verfügbar</div></div>
+      <div class="pbadge"><div class="pn">5</div><div class="ps">Verfügbar</div></div>
+      <div class="pbadge"><div class="pn">6</div><div class="ps">Verfügbar</div></div>
+    </div>
+
+    <ul class="pfacts">
+      <li><span class="ic">📐</span><span>Je 800 m² Grundstücksfläche</span></li>
+      <li><span class="ic">🌊</span><span>Direkter Zugang zum privaten See</span></li>
+      <li><span class="ic">⚡</span><span>Strom, Wasser &amp; Glasfaser bereits gelegt</span></li>
+      <li><span class="ic">⛰️</span><span>Bergblick auf Khao Sam Roi Yot</span></li>
+    </ul>
+
+    <div class="infobox" style="margin-top:13px">
+      Anlage AIP 2 · Pranburi, Prachuap Khiri Khan · Plots 1–6 verfügbar
+    </div>
+  </div>
+  <div class="pgfoot">Die Grundstücke</div>
+  <div class="pgnum">06</div>
+</section>
+
+<!-- ══════════ PAGE 7 · DIE LAGE ══════════ -->
+<section class="page">
+  <div class="pad">
+    <p class="eyebrow">Die Lage</p>
+    <h2 class="sec">Pranburi – Thailands bestgehütetes Geheimnis</h2>
+    <div class="divider"></div>
+    <p class="lead">Nur 8 km vom Zentrum Pranburis, 35 km vom Flughafen Hua Hin und rund
+      3 Stunden von Bangkok – mit geplanter Schnellzugverbindung schon bald deutlich näher.</p>
+
+    <div class="locmap"><img src="images/location-map.jpg" alt="Lage AIP 2" /></div>
+
+    <div class="dists">
+      <div class="dist"><div class="dk">3 km</div><div class="dl">Zum Strand</div></div>
+      <div class="dist"><div class="dk">8 km</div><div class="dl">Pranburi Zentrum</div></div>
+      <div class="dist"><div class="dk">15 km</div><div class="dl">Nationalpark</div></div>
+      <div class="dist"><div class="dk">35 km</div><div class="dl">Flughafen Hua Hin</div></div>
+    </div>
+
+    <p class="lead" style="margin-top:13px;font-style:italic">
+      „Pranburi ist heute, was Hua Hin vor 20 Jahren war – authentisch, unberührt und gerade
+      erst im Aufbruch." Internationale Infrastruktur, Kliniken auf westlichem Niveau und eine
+      wachsende Expat-Gemeinschaft treffen hier auf reine Natur.</p>
+
+    <div class="surround">
+      <div class="scard">
+        <div class="sim"><img src="images/wetlands.jpg" alt="" /></div>
+        <div class="sb"><h4>Khao Sam Roi Yot</h4><p>Ramsar-Nationalpark mit Lotus-Feuchtgebieten, Karstbergen und über 300 Vogelarten – 15 km entfernt.</p></div>
+      </div>
+      <div class="scard">
+        <div class="sim"><img src="images/beach.jpg" alt="" /></div>
+        <div class="sb"><h4>Pranburi Beach</h4><p>3 km entfernt: weiter, ruhiger Sandstrand mit Sonnenuntergängen über dem Golf von Thailand.</p></div>
+      </div>
+      <div class="scard">
+        <div class="sim"><img src="images/sea.jpg" alt="" /></div>
+        <div class="sb"><h4>Golf von Thailand</h4><p>Traditionelle Fischerdörfer, frische Meeresfrüchte und die ruhigste Küste der Region.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="pgfoot">Die Lage</div>
+  <div class="pgnum">07</div>
+</section>
+
+<!-- ══════════ PAGE 8 · KONTAKT ══════════ -->
+<section class="page contact">
+  <div class="cwrap">
+    <p class="eyebrow eyebrow-gold">Bereit für dein Paradies?</p>
+    <h2>Sichere dir jetzt deinen <em>Festpreis</em></h2>
+    <p class="clead">Mit steigenden Baukosten ab Ende Juli 2026 ist das aktuelle Preisfenster
+      zeitlich begrenzt. Nimm jetzt unverbindlich Kontakt auf – wir melden uns persönlich.</p>
+
+    <div class="ccards">
+      <div class="ccard">
+        <div class="cic">📧</div>
+        <div class="cl">E-Mail</div>
+        <div class="cv"><a href="mailto:pawinee.ok15@gmail.com">pawinee.ok15@gmail.com</a></div>
+        <div class="cn">Antwort innerhalb 24 Stunden</div>
+      </div>
+      <div class="ccard">
+        <div class="cic">📱</div>
+        <div class="cl">Telefon / WhatsApp</div>
+        <div class="cv">+66 86 352 3653</div>
+        <div class="cn">Khun Pawinee · Projektleitung</div>
+      </div>
+      <div class="ccard">
+        <div class="cic">📍</div>
+        <div class="cl">Standort</div>
+        <div class="cv">Pranburi, Prachuap Khiri Khan</div>
+        <div class="cn">Thailand · 20 km südlich von Hua Hin</div>
+      </div>
+    </div>
+
+    <div class="urg">
+      <p>⚠ <strong>Achtung:</strong> Baukosten steigen ab <strong>Ende Juli 2026</strong>
+        um 3–5 % pro Quartal. Der aktuelle Festpreis von <strong>2.500.000 THB</strong>
+        ist zeitlich begrenzt.</p>
+    </div>
+
+    <div class="contact__price">
+      <div>
+        <div class="cp-num">2.500.000 THB</div>
+        <div class="cp-lbl">Gesamtpreis inkl. Grundstück</div>
+      </div>
+      <div>
+        <div class="cp-num sm">≈ 66.000 €</div>
+        <div class="cp-lbl">Schlüsselfertig · All-in</div>
+      </div>
+      <div>
+        <div class="cp-num sm">2,5 Monate</div>
+        <div class="cp-lbl">Bis zum Einzug</div>
+      </div>
+    </div>
+
+    <div class="contact__brand">
+      <img src="images/logo.jpg" alt="" />
+      <div>
+        <div class="bt">A-Frames in Paradise</div>
+        <div class="bs">Eco-Luxus-Häuser am See · Pranburi, Thailand · Anlage AIP 2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

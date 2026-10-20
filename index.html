@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Einblend-Animationen nur mit funktionierendem JS; bei jedem Skriptfehler bleibt alles sichtbar -->
+  <script>document.documentElement.classList.add('js');window.addEventListener('error',function(){document.documentElement.classList.remove('js');});</script>
   <title>A-Frames in Paradise – Eco-Luxus am See · Pranburi, Thailand</title>
   <meta name="description" content="Schlüsselfertiges A-Frame Eco-Luxus-Haus (126 m²) auf 800 m² privatem Seegrundstück in Pranburi, Thailand. 2,85 Mio. THB / 75.200 € – bezugsfertig in 2,5 Monaten." />
   <meta name="keywords" content="A-Frame Thailand, Haus kaufen Pranburi, Thailand Immobilien Expat, Auswandern Thailand, Seegrundstück, Hard Asset" />
@@ -333,6 +335,13 @@
     .ff select option { background:#18291E; }
     .ff textarea { resize:vertical; min-height:84px; }
     .form-note { font-size:.72rem; color:rgba(255,255,255,.32); text-align:center; margin-top:.65rem; }
+    .form-status, .form-noscript { margin-top:1rem; background:rgba(184,150,46,.12); border:1px solid rgba(184,150,46,.4); border-radius:9px; padding:1rem 1.1rem; font-size:.85rem; color:rgba(255,255,255,.85); }
+    .form-status p + p { margin-top:.55rem; }
+    .form-status a, .form-noscript a { color:#7CDFA4; text-decoration:underline; }
+    .form-status label { display:block; font-size:.74rem; font-weight:600; color:rgba(255,255,255,.58); margin:.8rem 0 .32rem; }
+    .form-status textarea { width:100%; min-height:110px; background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.16); border-radius:7px; padding:.6rem .8rem; color:#fff; font-family:var(--sans); font-size:.8rem; resize:vertical; }
+    .form-status .btn-copy { margin-top:.6rem; padding:.55rem 1.2rem; font-size:.82rem; background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.3); }
+    .form-copymsg { display:inline-block; margin:.6rem 0 0 .7rem; font-size:.8rem; color:#7CDFA4; }
 
     /* ─── FOOTER ─── */
     footer { background:#0E1510; color:rgba(255,255,255,.46); padding:3rem 0 1.8rem; }
@@ -351,12 +360,12 @@
     .mcta a { display:flex; align-items:center; justify-content:center; gap:.4rem; }
 
     /* ─── ANIMATIONS ─── */
-    .fade { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
-    .fade.in { opacity:1; transform:none; }
-    .fade:nth-child(2) { transition-delay:.08s; }
-    .fade:nth-child(3) { transition-delay:.16s; }
-    .fade:nth-child(4) { transition-delay:.24s; }
-    @media(prefers-reduced-motion:reduce){ .fade{transition:none;opacity:1;transform:none;} .hero__img{transition:none;} }
+    .js .fade { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+    .js .fade.in { opacity:1; transform:none; }
+    .js .fade:nth-child(2) { transition-delay:.08s; }
+    .js .fade:nth-child(3) { transition-delay:.16s; }
+    .js .fade:nth-child(4) { transition-delay:.24s; }
+    @media(prefers-reduced-motion:reduce){ .js .fade{transition:none;opacity:1;transform:none;} .hero__img{transition:none;} }
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:980px) {
@@ -408,9 +417,9 @@
   <a href="#galerie"     onclick="closeMob()" data-i18n="nav_gallery">Galerie</a>
   <a href="#kontakt"     onclick="closeMob()" data-i18n="nav_cta">Jetzt anfragen</a>
   <div class="mob-lang">
-    <button onclick="setLang('de');closeMob()" id="mobDe" class="active">🇩🇪 DE</button>
-    <button onclick="setLang('en');closeMob()" id="mobEn">🇬🇧 EN</button>
-    <button onclick="setLang('th');closeMob()" id="mobTh">🇹🇭 TH</button>
+    <button onclick="chooseLang('de');closeMob()" id="mobDe" class="active">🇩🇪 DE</button>
+    <button onclick="chooseLang('en');closeMob()" id="mobEn">🇬🇧 EN</button>
+    <button onclick="chooseLang('th');closeMob()" id="mobTh">🇹🇭 TH</button>
   </div>
 </div>
 
@@ -431,9 +440,9 @@
         <li><a href="#kontakt" class="nav__cta-link" data-i18n="nav_cta">Jetzt anfragen</a></li>
       </ul>
       <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLang('de')" id="btnDe">DE</button>
-        <button class="lang-btn"        onclick="setLang('en')" id="btnEn">EN</button>
-        <button class="lang-btn"        onclick="setLang('th')" id="btnTh">TH</button>
+        <button class="lang-btn active" onclick="chooseLang('de')" id="btnDe">DE</button>
+        <button class="lang-btn"        onclick="chooseLang('en')" id="btnEn">EN</button>
+        <button class="lang-btn"        onclick="chooseLang('th')" id="btnTh">TH</button>
       </div>
       <button class="hamburger" id="ham" aria-label="Menü"><span></span><span></span><span></span></button>
     </div>
@@ -853,13 +862,13 @@
       <p data-i18n="form_sub">Hinterlasse deine Kontaktdaten – wir melden uns persönlich und unverbindlich.</p>
       <form onsubmit="handleForm(event)">
         <div class="form-row">
-          <div class="ff"><label data-i18n="f_fname">Vorname</label><input type="text" id="fname" placeholder="Max" required/></div>
-          <div class="ff"><label data-i18n="f_lname">Nachname</label><input type="text" id="lname" placeholder="Mustermann" required/></div>
+          <div class="ff"><label for="fname" data-i18n="f_fname">Vorname</label><input type="text" id="fname" placeholder="Max" autocomplete="given-name" maxlength="80" required/></div>
+          <div class="ff"><label for="lname" data-i18n="f_lname">Nachname</label><input type="text" id="lname" placeholder="Mustermann" autocomplete="family-name" maxlength="80" required/></div>
         </div>
-        <div class="ff"><label data-i18n="f_email">E-Mail</label><input type="email" id="femail" placeholder="max@beispiel.de" required/></div>
-        <div class="ff"><label data-i18n="f_phone">Telefon / WhatsApp</label><input type="tel" id="fphone" placeholder="+49 ..."/></div>
+        <div class="ff"><label for="femail" data-i18n="f_email">E-Mail</label><input type="email" id="femail" placeholder="max@beispiel.de" autocomplete="email" maxlength="120" required/></div>
+        <div class="ff"><label for="fphone" data-i18n="f_phone">Telefon / WhatsApp</label><input type="tel" id="fphone" placeholder="+49 ..." autocomplete="tel" maxlength="40"/></div>
         <div class="ff">
-          <label data-i18n="f_int">Ich interessiere mich für …</label>
+          <label for="fint" data-i18n="f_int">Ich interessiere mich für …</label>
           <select id="fint">
             <option value="kauf"    data-i18n="fi_buy">Kauf / Investition</option>
             <option value="info"    data-i18n="fi_info">Allgemeine Informationen</option>
@@ -867,9 +876,20 @@
             <option value="finanz"  data-i18n="fi_fin">Finanzierungs-/Steuerberatung</option>
           </select>
         </div>
-        <div class="ff"><label data-i18n="f_msg">Nachricht</label><textarea id="fmsg" placeholder="..."></textarea></div>
+        <div class="ff"><label for="fmsg" data-i18n="f_msg">Nachricht</label><textarea id="fmsg" placeholder="..." maxlength="1000"></textarea></div>
         <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;font-size:.97rem;padding:.95rem" data-i18n="f_submit" id="fsubmit">Jetzt unverbindlich anfragen →</button>
-        <p class="form-note" data-i18n="f_note">🔒 Kein Spam. Deine Daten werden nicht weitergegeben.</p>
+        <p class="form-note" data-i18n="f_note">Beim Absenden öffnet sich dein E-Mail-Programm mit einer vorbereiteten Nachricht an pawinee.ok15@gmail.com. Erst wenn du sie dort abschickst, erreicht uns deine Anfrage.</p>
+        <noscript><p class="form-noscript">Das Formular benötigt JavaScript. Bitte schreib uns direkt an <a href="mailto:pawinee.ok15@gmail.com">pawinee.ok15@gmail.com</a> oder ruf uns an: <a href="tel:+66863523653">+66 86 352 3653</a>.</p></noscript>
+        <!-- Ob die E-Mail wirklich abgeschickt wird, ist hier nicht feststellbar – daher kein „Gesendet“, Eingaben bleiben erhalten -->
+        <div class="form-status" id="fstatus" role="status" aria-live="polite" hidden>
+          <p data-i18n="f_status_p">Dein E-Mail-Programm sollte sich jetzt geöffnet haben. Bitte sende die vorbereitete E-Mail dort ab – erst dann ist deine Anfrage bei uns.</p>
+          <p data-i18n="f_status_alt">Nichts geöffnet? Kopiere den Anfragetext und schicke ihn an unsere E-Mail-Adresse – oder ruf uns an.</p>
+          <p><a href="mailto:pawinee.ok15@gmail.com">pawinee.ok15@gmail.com</a> · <a href="tel:+66863523653">+66 86 352 3653</a></p>
+          <label for="fcopytext" data-i18n="f_copy_label">Dein Anfragetext</label>
+          <textarea id="fcopytext" readonly></textarea>
+          <button type="button" class="btn btn-copy" id="fcopy" data-i18n="f_copy">Anfragetext kopieren</button>
+          <span class="form-copymsg" id="fcopymsg"></span>
+        </div>
       </form>
     </div>
   </div>
@@ -990,7 +1010,10 @@ const T = {
     form_h:"Angebot & Info anfordern", form_sub:"Hinterlasse deine Kontaktdaten – wir melden uns persönlich und unverbindlich.",
     f_fname:"Vorname", f_lname:"Nachname", f_email:"E-Mail", f_phone:"Telefon / WhatsApp", f_int:"Ich interessiere mich für …",
     fi_buy:"Kauf / Investition", fi_info:"Allgemeine Informationen", fi_view:"Virtuelle Besichtigung", fi_fin:"Finanzierungs-/Steuerberatung",
-    f_msg:"Nachricht", f_submit:"Jetzt unverbindlich anfragen →", f_note:"🔒 Kein Spam. Deine Daten werden nicht weitergegeben.",
+    f_msg:"Nachricht", f_submit:"Jetzt unverbindlich anfragen →", f_note:"Beim Absenden öffnet sich dein E-Mail-Programm mit einer vorbereiteten Nachricht an pawinee.ok15@gmail.com. Erst wenn du sie dort abschickst, erreicht uns deine Anfrage.",
+    f_status_p:"Dein E-Mail-Programm sollte sich jetzt geöffnet haben. Bitte sende die vorbereitete E-Mail dort ab – erst dann ist deine Anfrage bei uns.",
+    f_status_alt:"Nichts geöffnet? Kopiere den Anfragetext und schicke ihn an unsere E-Mail-Adresse – oder ruf uns an.",
+    f_copy_label:"Dein Anfragetext", f_copy:"Anfragetext kopieren", f_copied:"✓ Kopiert", f_copy_manual:"Bitte den markierten Text manuell kopieren.",
     foot_desc:"Schlüsselfertige Eco-Luxus-Häuser am See in Pranburi, Thailand – für Expats und internationale Investoren.",
     foot_nav:"Navigation", foot_contact:"Kontakt"
   },
@@ -1062,7 +1085,10 @@ const T = {
     form_h:"Request Offer & Info", form_sub:"Leave your details – we'll get back to you personally and without obligation.",
     f_fname:"First name", f_lname:"Last name", f_email:"Email", f_phone:"Phone / WhatsApp", f_int:"I'm interested in …",
     fi_buy:"Purchase / Investment", fi_info:"General information", fi_view:"Virtual viewing", fi_fin:"Financing / Tax advice",
-    f_msg:"Message", f_submit:"Enquire now →", f_note:"🔒 No spam. Your data will not be shared.",
+    f_msg:"Message", f_submit:"Enquire now →", f_note:"When you submit, your email app opens with a prepared message to pawinee.ok15@gmail.com. We only receive your enquiry once you send it from there.",
+    f_status_p:"Your email app should have opened. Please send the prepared email from there – only then will your enquiry reach us.",
+    f_status_alt:"Nothing opened? Copy the enquiry text and send it to our email address – or give us a call.",
+    f_copy_label:"Your enquiry text", f_copy:"Copy enquiry text", f_copied:"✓ Copied", f_copy_manual:"Please copy the selected text manually.",
     foot_desc:"Turnkey eco-luxury lake houses in Pranburi, Thailand – for expats and international investors.",
     foot_nav:"Navigation", foot_contact:"Contact"
   },
@@ -1134,24 +1160,38 @@ const T = {
     form_h:"ขอรับข้อเสนอและข้อมูล", form_sub:"ฝากข้อมูลติดต่อ – เราจะติดต่อกลับเป็นการส่วนตัวโดยไม่มีข้อผูกมัด",
     f_fname:"ชื่อ", f_lname:"นามสกุล", f_email:"อีเมล", f_phone:"โทรศัพท์ / WhatsApp", f_int:"ฉันสนใจ …",
     fi_buy:"ซื้อ / ลงทุน", fi_info:"ข้อมูลทั่วไป", fi_view:"ชมเสมือนจริง", fi_fin:"คำปรึกษาด้านการเงิน/ภาษี",
-    f_msg:"ข้อความ", f_submit:"สอบถามโดยไม่มีข้อผูกมัด →", f_note:"🔒 ไม่มีสแปม ข้อมูลของคุณจะไม่ถูกเปิดเผย",
+    f_msg:"ข้อความ", f_submit:"สอบถามโดยไม่มีข้อผูกมัด →", f_note:"เมื่อกดส่ง โปรแกรมอีเมลของคุณจะเปิดขึ้นพร้อมข้อความที่เตรียมไว้ถึง pawinee.ok15@gmail.com คำขอของคุณจะถึงเราเมื่อคุณกดส่งอีเมลนั้นแล้วเท่านั้น",
+    f_status_p:"โปรแกรมอีเมลของคุณน่าจะเปิดขึ้นแล้ว กรุณากดส่งอีเมลที่เตรียมไว้ – คำขอของคุณจะถึงเราหลังจากส่งแล้วเท่านั้น",
+    f_status_alt:"ไม่มีอะไรเปิดขึ้น? คัดลอกข้อความคำขอแล้วส่งไปยังอีเมลของเรา – หรือโทรหาเรา",
+    f_copy_label:"ข้อความคำขอของคุณ", f_copy:"คัดลอกข้อความคำขอ", f_copied:"✓ คัดลอกแล้ว", f_copy_manual:"กรุณาคัดลอกข้อความที่เลือกด้วยตนเอง",
     foot_desc:"บ้าน Eco-Luxury ริมทะเลสาบพร้อมกุญแจในปราณบุรี ไทย – สำหรับชาวต่างชาติและนักลงทุนระดับสากล",
     foot_nav:"นำทาง", foot_contact:"ติดต่อ"
   }
 };
 
-let currentLang = localStorage.getItem('lang') || 'de';
+/* ─── SPRACHE: nur gültige Werte, Speicher darf fehlen/blockiert sein ─── */
+const LANGS = ['de', 'en', 'th'];
+function readLang() {
+  try { const v = localStorage.getItem('lang'); return LANGS.includes(v) ? v : null; }
+  catch (e) { return null; }
+}
+function saveLang(lang) {
+  try { localStorage.setItem('lang', lang); }
+  catch (e) { /* Speicher blockiert – Sprache gilt nur für diesen Besuch */ }
+}
+let currentLang = readLang() || 'de';
 
 function setLang(lang) {
+  if (!LANGS.includes(lang) || !T[lang]) lang = 'de';
   currentLang = lang;
-  localStorage.setItem('lang', lang);
+  const dict = T[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (T[lang][key] !== undefined) el.textContent = T[lang][key];
+    if (dict[key] !== undefined) el.textContent = dict[key];
   });
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
-    if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
   document.documentElement.lang = lang;
   const hlCard = document.querySelector('.pcard-hl');
@@ -1163,7 +1203,9 @@ function setLang(lang) {
     if (mob) mob.classList.toggle('active', lang === l.toLowerCase());
   });
 }
-setLang(currentLang);
+/* Gespeichert wird nur bei aktiver Auswahl durch den Besucher */
+function chooseLang(lang) { setLang(lang); saveLang(currentLang); }
+try { setLang(currentLang); } catch (e) { document.documentElement.classList.remove('js'); }
 
 /* ─── NAV SCROLL + PROGRESS ─── */
 const nav  = document.getElementById('nav');
@@ -1188,10 +1230,14 @@ document.getElementById('mobClose').addEventListener('click', closeMob);
 function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
 
 /* ─── REVEAL ON SCROLL ─── */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.12 });
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.fade').forEach(el => el.classList.add('in'));
+}
 
 /* ─── LIGHTBOX ─── */
 const lightbox = document.getElementById('lightbox');
@@ -1209,23 +1255,55 @@ lightbox.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 /* ─── FORM HANDLER ─── */
+/* Übergangslösung ohne Backend: bereitet eine E-Mail vor. Ob sie wirklich abgeschickt wird,
+   ist nicht feststellbar – daher kein „Gesendet“, kein Zurücksetzen, Button bleibt aktiv. */
+const MAIL_TO = 'pawinee.ok15@gmail.com';
+const INTEREST_KEYS = { kauf: 'fi_buy', info: 'fi_info', besicht: 'fi_view', finanz: 'fi_fin' };
+let lastMailOpen = 0;
+
 function handleForm(e) {
   e.preventDefault();
-  const btn = document.getElementById('fsubmit');
-  const fname = document.getElementById('fname').value;
-  const lname = document.getElementById('lname').value;
-  const email = document.getElementById('femail').value;
-  const phone = document.getElementById('fphone').value || '-';
-  const interest = document.getElementById('fint').value;
-  const msg   = document.getElementById('fmsg').value || '-';
-  const subj  = encodeURIComponent('A-Frames in Paradise – Anfrage: ' + fname + ' ' + lname);
-  const body  = encodeURIComponent('Name: ' + fname + ' ' + lname + '\nE-Mail: ' + email + '\nTelefon: ' + phone + '\nInteresse: ' + interest + '\nNachricht: ' + msg);
-  window.location.href = 'mailto:pawinee.ok15@gmail.com?subject=' + subj + '&body=' + body;
-  btn.textContent = '✓ ' + (currentLang === 'en' ? "Sent! We'll be in touch." : currentLang === 'th' ? 'ส่งแล้ว! เราจะติดต่อกลับ' : 'Gesendet! Wir melden uns.');
-  btn.style.background = '#3D6B4F';
-  btn.disabled = true;
-  e.target.reset();
+  const val = id => document.getElementById(id).value.trim();
+  const fname = val('fname');
+  const lname = val('lname');
+  const email = val('femail');
+  const phone = val('fphone') || '-';
+  const interest = T.de[INTEREST_KEYS[val('fint')]] || val('fint');
+  const msg   = val('fmsg') || '-';
+  const subj  = 'A-Frames in Paradise – Anfrage: ' + fname + ' ' + lname;
+  const body  = 'Name: ' + fname + ' ' + lname + '\nE-Mail: ' + email + '\nTelefon: ' + phone + '\nInteresse: ' + interest + '\nNachricht: ' + msg;
+
+  document.getElementById('fcopytext').value = 'An: ' + MAIL_TO + '\nBetreff: ' + subj + '\n\n' + body;
+  setCopyMsg(null);
+  document.getElementById('fstatus').hidden = false;
+
+  const now = Date.now();
+  if (now - lastMailOpen < 2000) return;   // Doppelklick öffnet nicht zwei Entwürfe
+  lastMailOpen = now;
+  window.location.href = 'mailto:' + MAIL_TO + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
 }
+
+function setCopyMsg(key) {
+  const m = document.getElementById('fcopymsg');
+  if (!key) { m.removeAttribute('data-i18n'); m.textContent = ''; return; }
+  m.setAttribute('data-i18n', key);   // wird bei Sprachwechsel mitübersetzt
+  m.textContent = T[currentLang][key];
+}
+
+document.getElementById('fcopy').addEventListener('click', () => {
+  const ta = document.getElementById('fcopytext');
+  const fallback = () => {
+    ta.focus(); ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+    setCopyMsg(ok ? 'f_copied' : 'f_copy_manual');
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(ta.value).then(() => setCopyMsg('f_copied'), fallback);
+  } else {
+    fallback();
+  }
+});
 
 /* ─── SMOOTH ANCHOR SCROLL ─── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {

@@ -169,6 +169,8 @@
 
     /* ─── VALUE PROPS ─── */
     .values__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(235px,1fr)); gap:1.4rem; margin-top:2.8rem; }
+    .vp-intro { display:grid; grid-template-columns:1.15fr .85fr; gap:3rem; align-items:center; }
+    .vp-img img { height:auto; }
     .vcard { background:var(--white); border:1px solid var(--border); border-radius:var(--r); padding:1.85rem; position:relative; overflow:hidden; transition:transform .25s,box-shadow .25s; }
     .vcard::after { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:linear-gradient(90deg,var(--green),var(--gold)); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
     .vcard:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
@@ -214,6 +216,9 @@
     .land-imgs { display:grid; grid-template-columns:1fr; gap:.9rem; }
     .land-imgs .img-wrap { box-shadow:var(--shadow); }
     .land-imgs img { aspect-ratio:16/9; }
+    .land-text { align-self:start; }
+    .land-extra { box-shadow:var(--shadow); margin-top:1.4rem; }
+    .land-extra img { height:auto; }
 
     /* ─── LAKE STORY ─── */
     .lake-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; margin-top:3rem; }
@@ -304,6 +309,9 @@
     .g-tall { grid-column:span 2; grid-row:span 2; }
     .g-std  { grid-column:span 2; grid-row:span 1; }
     .g-box  { grid-column:span 2; grid-row:span 2; }
+    .g-fit { background:#EEF2EC; }
+    .g-fit img { object-fit:contain; }
+    .g-fit:hover img { transform:none; }
 
     /* ─── LIGHTBOX ─── */
     .lightbox { display:none; position:fixed; inset:0; z-index:400; background:rgba(8,14,10,.94); align-items:center; justify-content:center; padding:2rem; cursor:zoom-out; }
@@ -335,6 +343,15 @@
     .ccard-val a { color:#7CDFA4; transition:color .2s; }
     .ccard-val a:hover { color:#A6F0C2; }
     .ccard-note { font-size:.76rem; color:rgba(255,255,255,.4); margin-top:.32rem; }
+    .ccol { display:flex; flex-direction:column; }
+    .ccol .ccard { flex:1; }
+    .ccard-action { display:block; font-weight:600; font-size:.95rem; color:#F0D97A; margin-bottom:.6rem; text-decoration:underline; text-underline-offset:3px; }
+    .ccard-action:hover { color:#fff; }
+    .ccard-action--empty { visibility:hidden; text-decoration:none; }
+    .copy-val { background:none; border:0; padding:0; font:inherit; color:#7CDFA4; cursor:copy; text-align:left; overflow-wrap:break-word; }
+    .copy-val:hover { color:#A6F0C2; text-decoration:underline; }
+    .copy-msg { font-size:.76rem; color:#7CDFA4; min-height:1.1em; margin-top:.2rem; }
+    .copy-msg.err { color:#F0D97A; }
     .form-wrap { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:var(--r-lg); padding:2.4rem; max-width:560px; margin:2.6rem auto 0; text-align:left; }
     .form-wrap h3 { font-family:var(--serif); font-size:1.45rem; color:#fff; margin-bottom:.4rem; }
     .form-wrap > p { font-size:.85rem; color:rgba(255,255,255,.56); margin-bottom:1.5rem; }
@@ -357,7 +374,7 @@
 
     /* ─── FOOTER ─── */
     footer { background:#0E1510; color:rgba(255,255,255,.46); padding:3rem 0 1.8rem; }
-    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2.2rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr; gap:3rem; margin-bottom:2.2rem; }
     .footer-brand img { width:128px; border-radius:10px; margin-bottom:.9rem; }
     .footer-brand p { font-size:.85rem; line-height:1.7; max-width:280px; }
     footer h5 { font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.85); margin-bottom:.95rem; }
@@ -365,6 +382,12 @@
     footer ul li { margin-bottom:.5rem; }
     footer ul li a { font-size:.85rem; color:rgba(255,255,255,.42); transition:color .2s; }
     footer ul li a:hover { color:rgba(255,255,255,.9); }
+    .footer-contact { display:grid; grid-template-columns:auto 1fr auto; grid-template-areas:"left text right"; gap:2rem; align-items:center; margin-bottom:2.2rem; }
+    .fc-left { grid-area:left; } .fc-right { grid-area:right; } .fc-text { grid-area:text; text-align:center; }
+    .fc-img { height:260px; width:auto; border-radius:var(--r); display:block; }
+    footer .copy-val { color:rgba(255,255,255,.75); font-size:.9rem; }
+    footer .copy-val:hover { color:#fff; }
+    .fc-text ul li { margin-bottom:.7rem; }
     .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding-top:1.4rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:.65rem; font-size:.78rem; }
 
     /* ─── MOBILE STICKY CTA ─── */
@@ -382,6 +405,7 @@
     /* ─── RESPONSIVE ─── */
     @media(max-width:980px) {
       .split, .price-compare, .plot-grid, .loc-split { grid-template-columns:1fr; }
+      .vp-intro { grid-template-columns:1fr; gap:2rem; }
       .price-compare { gap:1rem; }
       .vs { display:none; }
       .footer-grid { grid-template-columns:1fr 1fr; }
@@ -404,12 +428,16 @@
       .stats__grid { grid-template-columns:repeat(2,1fr); }
       .footer-grid { grid-template-columns:1fr; gap:2rem; }
       .footer-bottom { flex-direction:column; text-align:center; }
+      .footer-contact { grid-template-columns:1fr 1fr; grid-template-areas:"text text" "left right"; justify-items:center; gap:1.2rem; }
+      .fc-img { height:180px; }
+      .ccard-action--empty { display:none; }
       .hero__pill { flex-direction:column; gap:.6rem; align-items:flex-start; }
       .pill-sep { width:46px; height:1px; }
       .lake-steps { grid-template-columns:1fr; }
       .timeline { grid-template-columns:1fr; }
       .gallery { grid-template-columns:repeat(2,1fr); grid-auto-rows:130px; }
       .g-wide,.g-tall,.g-box { grid-column:span 2; grid-row:span 1; }
+      .g-fit { grid-row:span 2; }
       .dist-grid { grid-template-columns:repeat(2,1fr); }
       .mcta { display:block; }
       body { padding-bottom:64px; }
@@ -528,11 +556,14 @@
 <!-- ════ VALUE PROPS ════ -->
 <section class="section" id="vorteile">
   <div class="container">
-    <div class="fade">
-      <p class="eyebrow" data-i18n="vp_eyebrow">Warum A-Frames in Paradise?</p>
-      <h2 data-i18n-html="vp_h2">Mehr als ein Zuhause.<br>Eine kluge Entscheidung.</h2>
-      <div class="divider"></div>
-      <p class="lead" data-i18n="vp_lead">In Zeiten globaler Unsicherheit und steigender Inflation bietet ein Hard Asset in Thailand eine der attraktivsten Schutzstrategien für Expats und internationale Investoren.</p>
+    <div class="vp-intro">
+      <div class="fade">
+        <p class="eyebrow" data-i18n="vp_eyebrow">Warum A-Frames in Paradise?</p>
+        <h2 data-i18n-html="vp_h2">Mehr als ein Zuhause.<br>Eine kluge Entscheidung.</h2>
+        <div class="divider"></div>
+        <p class="lead" data-i18n="vp_lead">In Zeiten globaler Unsicherheit und steigender Inflation bietet ein Hard Asset in Thailand eine der attraktivsten Schutzstrategien für Expats und internationale Investoren.</p>
+      </div>
+      <div class="fade"><div class="img-wrap vp-img"><img src="images/pawinne-1.jpg" class="zoom" alt="Sonnenuntergang am Meer" loading="lazy"/></div></div>
     </div>
     <div class="values__grid">
       <div class="vcard fade"><div class="vcard__icon">🏛️</div><h3 data-i18n="v1_h">Sicherer Hard Asset</h3><p data-i18n="v1_p">Immobilien schützen Kapital verlässlich. Während Bargeld an Kaufkraft verliert, bewahrt und steigert Grund und Boden seinen Wert – besonders in einem Wachstumsmarkt wie Thailand.</p></div>
@@ -578,7 +609,7 @@
 <section class="section" id="grundstueck">
   <div class="container">
     <div class="split">
-      <div class="fade">
+      <div class="fade land-text">
         <p class="eyebrow" data-i18n="land_eye">Das Grundstück</p>
         <h2 data-i18n="land_h2">800 m² am privaten See – komplett erschlossen</h2>
         <div class="divider"></div>
@@ -588,6 +619,7 @@
           <li><span class="ico">🛣️</span><div><strong data-i18n="land_i5h">Befestigtes Privatufer</strong>, <span data-i18n="land_i5t">eigene gesicherte Zufahrtsstraße</span></div></li>
           <li><span class="ico">⚡</span><div><strong data-i18n="land_i6">Strom-, Wasser- und Internetanschlüsse vorhanden.</strong></div></li>
         </ul>
+        <div class="img-wrap land-extra"><img src="images/lake-a-frame.jpg" class="zoom" alt="A-Frame am See" loading="lazy"/></div>
       </div>
       <div class="fade">
         <div class="land-imgs">
@@ -787,8 +819,8 @@
       <div class="gal-item g-wide"><img src="images/hero.png" class="zoom" alt="A-Frame bei Nacht" loading="lazy"/></div>
       <div class="gal-item g-box"><img src="images/house-1.jpg" class="zoom" alt="A-Frame Frontansicht" loading="lazy"/></div>
       <div class="gal-item g-std"><img src="images/construction-2.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/mountain-view-2.jpg" class="zoom" alt="Bergblick über den See" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/lake-a-frame.jpg" class="zoom" alt="A-Frame am See" loading="lazy"/></div>
+      <div class="gal-item g-std g-fit"><img src="images/a-frame-see.png" class="zoom" alt="A-Frame am See" loading="lazy"/></div>
+      <div class="gal-item g-std g-fit"><img src="images/a-frame-white.png" class="zoom" alt="Weißes A-Frame mit Steg" loading="lazy"/></div>
       <div class="gal-item g-std"><img src="images/a-frame-1.png" class="zoom" alt="A-Frame Ansicht" loading="lazy"/></div>
       <div class="gal-item g-std"><img src="images/a-frame-2.png" class="zoom" alt="A-Frame mit Terrasse" loading="lazy"/></div>
       <div class="gal-item g-std"><img src="images/a-frames-fertig-teil-8.jpg" class="zoom" alt="A-Frame fertiggestellt" loading="lazy"/></div>
@@ -828,23 +860,34 @@
       <p class="lead" data-i18n="cta_lead">Mit steigenden Baukosten ab 2027 ist das aktuelle Preisfenster zeitlich begrenzt. Nimm jetzt unverbindlich Kontakt auf.</p>
     </div>
     <div class="contact-grid">
-      <div class="ccard fade">
-        <div class="ccard-icon">📧</div>
-        <div class="ccard-lbl" data-i18n="cc1_l">E-Mail</div>
-        <div class="ccard-val"><a href="mailto:pawinee.ok15@gmail.com" data-i18n="cc1_link">E-Mail schreiben</a></div>
-        <div class="ccard-note" data-i18n="cc1_n">Antwort innerhalb 24 Stunden</div>
+      <div class="ccol fade">
+        <a class="ccard-action" href="mailto:pawinee.ok15@gmail.com" data-i18n="cc1_link">E-Mail schreiben</a>
+        <div class="ccard">
+          <div class="ccard-icon">📧</div>
+          <div class="ccard-lbl" data-i18n="cc1_l">E-Mail</div>
+          <div class="ccard-val"><button type="button" class="copy-val" data-copy="pawinee.ok15@gmail.com" data-copied="copied_mail">pawinee.ok15@<wbr>gmail.com</button></div>
+          <div class="copy-msg" role="status" aria-live="polite"></div>
+          <div class="ccard-note" data-i18n="cc1_n">Antwort innerhalb 24 Stunden</div>
+        </div>
       </div>
-      <div class="ccard fade">
-        <div class="ccard-icon">📱</div>
-        <div class="ccard-lbl" data-i18n="cc2_l">Telefon / WhatsApp</div>
-        <div class="ccard-val"><a href="tel:+66863523653" data-i18n="cc2_link">Jetzt anrufen</a></div>
-        <div class="ccard-note" data-i18n="cc2_n">Khun Pawinee · Projektleitung</div>
+      <div class="ccol fade">
+        <a class="ccard-action" href="tel:+66863523653" data-i18n="cc2_link">Jetzt anrufen</a>
+        <div class="ccard">
+          <div class="ccard-icon">📱</div>
+          <div class="ccard-lbl" data-i18n="cc2_l">Telefon / WhatsApp</div>
+          <div class="ccard-val"><button type="button" class="copy-val" data-copy="+66 86 352 3653" data-copied="copied_phone">+66 86 352 3653</button></div>
+          <div class="copy-msg" role="status" aria-live="polite"></div>
+          <div class="ccard-note" data-i18n="cc2_n">Khun Pawinee · Projektleitung</div>
+        </div>
       </div>
-      <div class="ccard fade">
-        <div class="ccard-icon">📍</div>
-        <div class="ccard-lbl" data-i18n="cc3_l">Standort</div>
-        <div class="ccard-val">Pranburi, Prachuap Khiri Khan</div>
-        <div class="ccard-note" data-i18n="cc3_n">Thailand · 20 km südlich von Hua Hin</div>
+      <div class="ccol fade">
+        <span class="ccard-action ccard-action--empty" aria-hidden="true">&nbsp;</span>
+        <div class="ccard">
+          <div class="ccard-icon">📍</div>
+          <div class="ccard-lbl" data-i18n="cc3_l">Standort</div>
+          <div class="ccard-val">Pranburi, Prachuap Khiri Khan</div>
+          <div class="ccard-note" data-i18n="cc3_n">Thailand · 20 km südlich von Hua Hin</div>
+        </div>
       </div>
     </div>
     <!-- Formular vorerst ausgeblendet (Revision 3) – Markup und JS bleiben erhalten -->
@@ -904,14 +947,18 @@
           <li><a href="#galerie" data-i18n="nav_gallery">Galerie</a></li>
         </ul>
       </div>
-      <div>
+    </div>
+    <div class="footer-contact">
+      <img class="fc-img fc-left zoom" src="images/pawinne-3.jpg" alt="Khun Pawinee" loading="lazy"/>
+      <div class="fc-text">
         <h5 data-i18n="foot_contact">Kontakt</h5>
         <ul>
-          <li><a href="mailto:pawinee.ok15@gmail.com">📧 pawinee.ok15@gmail.com</a></li>
-          <li><a href="tel:+66863523653">📱 +66 86 352 3653</a></li>
+          <li>📧 <button type="button" class="copy-val" data-copy="pawinee.ok15@gmail.com" data-copied="copied_mail">pawinee.ok15@gmail.com</button><div class="copy-msg" role="status" aria-live="polite"></div></li>
+          <li>📱 <button type="button" class="copy-val" data-copy="+66 86 352 3653" data-copied="copied_phone">+66 86 352 3653</button><div class="copy-msg" role="status" aria-live="polite"></div></li>
           <li><a href="#lage">📍 Pranburi, Thailand</a></li>
         </ul>
       </div>
+      <img class="fc-img fc-right zoom" src="images/pawinne-2.jpg" alt="Khun Pawinee" loading="lazy"/>
     </div>
     <div class="footer-bottom">
       <p>© 2026 A-Frames in Paradise · AIP 2</p>
@@ -992,7 +1039,7 @@ const T = {
     t2_text:'„Nach 15 Jahren als Digital Nomad wollte ich einen festen Hafen. Das A-Frame am See gibt mir Ruhe und das Wissen, in einen echten Hard Asset investiert zu haben. Absolut empfehlenswert für jeden Expat.“',
     cta_eye:"Bereit für dein Paradies?", cta_h2:"Sichere dir jetzt deinen<br>Festpreis – 2.850.000 THB",
     cta_lead:"Mit steigenden Baukosten ab 2027 ist das aktuelle Preisfenster zeitlich begrenzt. Nimm jetzt unverbindlich Kontakt auf.",
-    cc1_l:"E-Mail", cc1_link:"E-Mail schreiben", cc2_link:"Jetzt anrufen", cc1_n:"Antwort innerhalb 24 Stunden", cc2_l:"Telefon / WhatsApp", cc2_n:"Khun Pawinee · Projektleitung", cc3_l:"Standort", cc3_n:"Thailand · 20 km südlich von Hua Hin",
+    cc1_l:"E-Mail", copied_mail:"E-Mail-Adresse kopiert", copied_phone:"Telefonnummer kopiert", cc1_link:"E-Mail schreiben", cc2_link:"Jetzt anrufen", cc1_n:"Antwort innerhalb 24 Stunden", cc2_l:"Telefon / WhatsApp", cc2_n:"Khun Pawinee · Projektleitung", cc3_l:"Standort", cc3_n:"Thailand · 20 km südlich von Hua Hin",
     form_h:"Angebot & Info anfordern", form_sub:"Hinterlasse deine Kontaktdaten – wir melden uns persönlich und unverbindlich.",
     f_fname:"Vorname", f_lname:"Nachname", f_email:"E-Mail", f_phone:"Telefon / WhatsApp", f_int:"Ich interessiere mich für …",
     fi_buy:"Kauf / Investition", fi_info:"Allgemeine Informationen", fi_view:"Virtuelle Besichtigung", fi_fin:"Finanzierungs-/Steuerberatung",
@@ -1062,7 +1109,7 @@ const T = {
     t2_text:'"After 15 years as a digital nomad I wanted a permanent base. The A-Frame by the lake gives me peace and the knowledge that I\'ve invested in a real hard asset. Highly recommended for any expat."',
     cta_eye:"Ready for your paradise?", cta_h2:"Lock in your fixed price now –<br>2,850,000 THB",
     cta_lead:"With construction costs rising from 2027, the current price window is time-limited. Get in touch today, with no obligation.",
-    cc1_l:"Email", cc1_link:"Write an email", cc2_link:"Call now", cc1_n:"Reply within 24 hours", cc2_l:"Phone / WhatsApp", cc2_n:"Khun Pawinee · Project Manager", cc3_l:"Location", cc3_n:"Thailand · 20 km south of Hua Hin",
+    cc1_l:"Email", copied_mail:"Email address copied", copied_phone:"Phone number copied", cc1_link:"Write an email", cc2_link:"Call now", cc1_n:"Reply within 24 hours", cc2_l:"Phone / WhatsApp", cc2_n:"Khun Pawinee · Project Manager", cc3_l:"Location", cc3_n:"Thailand · 20 km south of Hua Hin",
     form_h:"Request Offer & Info", form_sub:"Leave your details – we'll get back to you personally and without obligation.",
     f_fname:"First name", f_lname:"Last name", f_email:"Email", f_phone:"Phone / WhatsApp", f_int:"I'm interested in …",
     fi_buy:"Purchase / Investment", fi_info:"General information", fi_view:"Virtual viewing", fi_fin:"Financing / Tax advice",
@@ -1132,7 +1179,7 @@ const T = {
     t2_text:'"หลังจาก 15 ปีในฐานะ Digital Nomad ฉันอยากได้ฐานที่มั่นคง บ้าน A-Frame ริมทะเลสาบให้ความสงบและความรู้สึกว่าได้ลงทุนใน Hard Asset ที่แท้จริง แนะนำอย่างยิ่ง"',
     cta_eye:"พร้อมสำหรับสวรรค์ของคุณ?", cta_h2:"ล็อคราคาคงที่ตอนนี้ –<br>2,850,000 บาท",
     cta_lead:"ด้วยต้นทุนก่อสร้างที่สูงขึ้นตั้งแต่ปี 2570 หน้าต่างราคาปัจจุบันมีเวลาจำกัด ติดต่อเราวันนี้โดยไม่มีข้อผูกมัด",
-    cc1_l:"อีเมล", cc1_link:"ส่งอีเมล", cc2_link:"โทรเลย", cc1_n:"ตอบกลับภายใน 24 ชั่วโมง", cc2_l:"โทรศัพท์ / WhatsApp", cc2_n:"คุณภาวิณี · ผู้จัดการโครงการ", cc3_l:"ที่ตั้ง", cc3_n:"ไทย · 20 กม. ทางใต้ของหัวหิน",
+    cc1_l:"อีเมล", copied_mail:"คัดลอกอีเมลแล้ว", copied_phone:"คัดลอกหมายเลขโทรศัพท์แล้ว", cc1_link:"ส่งอีเมล", cc2_link:"โทรเลย", cc1_n:"ตอบกลับภายใน 24 ชั่วโมง", cc2_l:"โทรศัพท์ / WhatsApp", cc2_n:"คุณภาวิณี · ผู้จัดการโครงการ", cc3_l:"ที่ตั้ง", cc3_n:"ไทย · 20 กม. ทางใต้ของหัวหิน",
     form_h:"ขอรับข้อเสนอและข้อมูล", form_sub:"ฝากข้อมูลติดต่อ – เราจะติดต่อกลับเป็นการส่วนตัวโดยไม่มีข้อผูกมัด",
     f_fname:"ชื่อ", f_lname:"นามสกุล", f_email:"อีเมล", f_phone:"โทรศัพท์ / WhatsApp", f_int:"ฉันสนใจ …",
     fi_buy:"ซื้อ / ลงทุน", fi_info:"ข้อมูลทั่วไป", fi_view:"ชมเสมือนจริง", fi_fin:"คำปรึกษาด้านการเงิน/ภาษี",
@@ -1259,6 +1306,23 @@ function handleForm(e) {
   window.location.href = 'mailto:' + MAIL_TO + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
 }
 
+/* ─── KOPIEREN (Kontaktdaten und Formular) ─── */
+function copyText(text) {
+  const legacy = () => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+    ta.remove();
+    return ok;
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text).then(() => true, () => legacy());
+  }
+  return Promise.resolve(legacy());
+}
+
 function setCopyMsg(key) {
   const m = document.getElementById('fcopymsg');
   if (!key) { m.removeAttribute('data-i18n'); m.textContent = ''; return; }
@@ -1268,17 +1332,22 @@ function setCopyMsg(key) {
 
 document.getElementById('fcopy').addEventListener('click', () => {
   const ta = document.getElementById('fcopytext');
-  const fallback = () => {
-    ta.focus(); ta.select();
-    let ok = false;
-    try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+  copyText(ta.value).then(ok => {
+    if (!ok) { ta.focus(); ta.select(); }
     setCopyMsg(ok ? 'f_copied' : 'f_copy_manual');
-  };
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(ta.value).then(() => setCopyMsg('f_copied'), fallback);
-  } else {
-    fallback();
-  }
+  });
+});
+
+document.querySelectorAll('.copy-val').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const msg = btn.parentElement.querySelector('.copy-msg') || btn.closest('.ccard').querySelector('.copy-msg');
+    copyText(btn.dataset.copy).then(ok => {
+      if (!ok) { const r = document.createRange(); r.selectNodeContents(btn); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      msg.classList.toggle('err', !ok);
+      msg.textContent = T[currentLang][ok ? btn.dataset.copied : 'f_copy_manual'];
+      clearTimeout(msg._t); msg._t = setTimeout(() => { msg.textContent = ''; msg.classList.remove('err'); }, 2500);
+    });
+  });
 });
 
 /* ─── SMOOTH ANCHOR SCROLL ─── */

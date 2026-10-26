@@ -13,11 +13,18 @@
   <meta property="og:description" content="Komplett schlüsselfertiges A-Frame Haus + 800 m² Seegrundstück in Pranburi für 2,85 Mio. THB (ca. 75.000 €, je nach aktuellem Wechselkurs)." />
   <meta property="og:image" content="images/house-1.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/playfair-display-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
 
   <style>
+    /* ─────────────  FONTS (lokal, SIL OFL 1.1 – siehe fonts/OFL.txt)  ───────────── */
+    @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/inter-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/inter-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+    @font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:swap;src:url('fonts/playfair-display-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+    @font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:swap;src:url('fonts/playfair-display-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+    @font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 900;font-display:swap;src:url('fonts/playfair-display-italic-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+    @font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 900;font-display:swap;src:url('fonts/playfair-display-italic-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+
     /* ─────────────  TOKENS  ───────────── */
     :root {
       --green:      #3D6B4F;
@@ -217,6 +224,7 @@
     .land-imgs .img-wrap { box-shadow:var(--shadow); }
     .land-imgs img { aspect-ratio:16/9; }
     .land-text { align-self:start; }
+    .land-imgs-col { align-self:end; }
     .land-extra { box-shadow:var(--shadow); margin-top:1.4rem; }
     .land-extra img { height:auto; }
 
@@ -309,9 +317,10 @@
     .g-tall { grid-column:span 2; grid-row:span 2; }
     .g-std  { grid-column:span 2; grid-row:span 1; }
     .g-box  { grid-column:span 2; grid-row:span 2; }
-    .g-fit { background:#EEF2EC; }
-    .g-fit img { object-fit:contain; }
-    .g-fit:hover img { transform:none; }
+    .gal-row { display:flex; gap:.85rem; margin-top:.85rem; }
+    .gal-row .gal-item { flex:var(--ar) 1 0; aspect-ratio:var(--ar); min-width:0; }
+    .gal-zoom img { transform:scale(1.08); }
+    .gal-zoom:hover img { transform:scale(1.14); }
 
     /* ─── LIGHTBOX ─── */
     .lightbox { display:none; position:fixed; inset:0; z-index:400; background:rgba(8,14,10,.94); align-items:center; justify-content:center; padding:2rem; cursor:zoom-out; }
@@ -334,7 +343,12 @@
     .cta-section { background:linear-gradient(150deg,#18291E,#2D4A39 55%,#18291E); color:#fff; text-align:center; }
     .cta-section h2 { color:#fff; }
     .cta-section .lead { margin:0 auto 2.3rem; }
-    .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(225px,1fr)); gap:1.25rem; margin:2.3rem 0; text-align:left; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1.3fr 1fr; gap:1.25rem; margin:2.3rem 0; text-align:left; }
+    .cta-head { display:grid; grid-template-columns:1fr 1.3fr 1fr; gap:1.25rem; align-items:end; }
+    .cta-img { display:flex; justify-content:center; }
+    .cta-img img { height:300px; width:auto; max-width:100%; object-fit:contain; border-radius:var(--r); box-shadow:var(--shadow-lg); }
+    .cta-intro { align-self:center; }
+    .cta-intro .lead { margin:0 auto; }
     .ccard { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:var(--r); padding:1.65rem; transition:background .2s,transform .2s; }
     .ccard:hover { background:rgba(255,255,255,.12); transform:translateY(-3px); }
     .ccard-icon { width:46px; height:46px; background:rgba(61,107,79,.45); border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:1.35rem; margin-bottom:.9rem; }
@@ -382,9 +396,8 @@
     footer ul li { margin-bottom:.5rem; }
     footer ul li a { font-size:.85rem; color:rgba(255,255,255,.42); transition:color .2s; }
     footer ul li a:hover { color:rgba(255,255,255,.9); }
-    .footer-contact { display:grid; grid-template-columns:auto 1fr auto; grid-template-areas:"left text right"; gap:2rem; align-items:center; margin-bottom:2.2rem; }
-    .fc-left { grid-area:left; } .fc-right { grid-area:right; } .fc-text { grid-area:text; text-align:center; }
-    .fc-img { height:260px; width:auto; border-radius:var(--r); display:block; }
+    .footer-contact { display:flex; justify-content:center; margin-bottom:2.2rem; }
+    .fc-text { text-align:center; }
     footer .copy-val { color:rgba(255,255,255,.75); font-size:.9rem; }
     footer .copy-val:hover { color:#fff; }
     .fc-text ul li { margin-bottom:.7rem; }
@@ -413,6 +426,11 @@
       .timeline { grid-template-columns:repeat(2,1fr); row-gap:2.4rem; }
       .timeline::before { display:none; }
       .gallery { grid-template-columns:repeat(4,1fr); }
+      .contact-grid { grid-template-columns:1fr; }
+      .cta-head { grid-template-columns:1fr 1fr; grid-template-areas:"l r" "t t"; }
+      .cta-img--l { grid-area:l; } .cta-img--r { grid-area:r; } .cta-intro { grid-area:t; margin-top:1rem; }
+      .cta-img img { height:240px; }
+      .ccard-action--empty { display:none; }
     }
     @media(max-width:960px) {
       .nav__links, .lang-switch { display:none; }
@@ -428,16 +446,15 @@
       .stats__grid { grid-template-columns:repeat(2,1fr); }
       .footer-grid { grid-template-columns:1fr; gap:2rem; }
       .footer-bottom { flex-direction:column; text-align:center; }
-      .footer-contact { grid-template-columns:1fr 1fr; grid-template-areas:"text text" "left right"; justify-items:center; gap:1.2rem; }
-      .fc-img { height:180px; }
-      .ccard-action--empty { display:none; }
+      .cta-img img { height:190px; }
       .hero__pill { flex-direction:column; gap:.6rem; align-items:flex-start; }
       .pill-sep { width:46px; height:1px; }
       .lake-steps { grid-template-columns:1fr; }
       .timeline { grid-template-columns:1fr; }
       .gallery { grid-template-columns:repeat(2,1fr); grid-auto-rows:130px; }
       .g-wide,.g-tall,.g-box { grid-column:span 2; grid-row:span 1; }
-      .g-fit { grid-row:span 2; }
+      .gal-row { flex-direction:column; }
+      .gal-row .gal-item { flex:none; width:100%; }
       .dist-grid { grid-template-columns:repeat(2,1fr); }
       .mcta { display:block; }
       body { padding-bottom:64px; }
@@ -621,7 +638,7 @@
         </ul>
         <div class="img-wrap land-extra"><img src="images/lake-a-frame.jpg" class="zoom" alt="A-Frame am See" loading="lazy"/></div>
       </div>
-      <div class="fade">
+      <div class="fade land-imgs-col">
         <div class="land-imgs">
           <div class="img-wrap"><img src="images/a-frame-palm-1.jpg" class="zoom" alt="A-Frame am See mit Palmen und Bergkulisse" loading="lazy"/></div>
           <div class="img-wrap"><img src="images/mountain-view-2.jpg" class="zoom" alt="Bergblick über den See" loading="lazy"/></div>
@@ -818,12 +835,16 @@
     <div class="gallery fade">
       <div class="gal-item g-wide"><img src="images/hero.png" class="zoom" alt="A-Frame bei Nacht" loading="lazy"/></div>
       <div class="gal-item g-box"><img src="images/house-1.jpg" class="zoom" alt="A-Frame Frontansicht" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/construction-2.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
-      <div class="gal-item g-std g-fit"><img src="images/a-frame-see.png" class="zoom" alt="A-Frame am See" loading="lazy"/></div>
-      <div class="gal-item g-std g-fit"><img src="images/a-frame-white.png" class="zoom" alt="Weißes A-Frame mit Steg" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/a-frame-1.png" class="zoom" alt="A-Frame Ansicht" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/a-frame-2.png" class="zoom" alt="A-Frame mit Terrasse" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/a-frames-fertig-teil-8.jpg" class="zoom" alt="A-Frame fertiggestellt" loading="lazy"/></div>
+    </div>
+    <div class="gal-row fade">
+      <div class="gal-item" style="--ar:1.791"><img src="images/construction-2.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
+      <div class="gal-item gal-zoom" style="--ar:1.370"><img src="images/a-frame-see.png" class="zoom" alt="A-Frame am See" loading="lazy"/></div>
+      <div class="gal-item gal-zoom" style="--ar:1.370"><img src="images/a-frame-white.png" class="zoom" alt="Weißes A-Frame mit Steg" loading="lazy"/></div>
+    </div>
+    <div class="gal-row fade">
+      <div class="gal-item" style="--ar:1.600"><img src="images/a-frame-1.png" class="zoom" alt="A-Frame Ansicht" loading="lazy"/></div>
+      <div class="gal-item" style="--ar:0.882"><img src="images/a-frame-2.png" class="zoom" alt="A-Frame mit Terrasse" loading="lazy"/></div>
+      <div class="gal-item" style="--ar:1.791"><img src="images/a-frames-fertig-teil-8.jpg" class="zoom" alt="A-Frame fertiggestellt" loading="lazy"/></div>
     </div>
   </div>
 </section>
@@ -854,10 +875,14 @@
 <!-- ════ CTA / KONTAKT ════ -->
 <section class="section cta-section" id="kontakt">
   <div class="container">
-    <div class="fade">
-      <p class="eyebrow eyebrow-gold eyebrow-center" data-i18n="cta_eye">Bereit für dein Paradies?</p>
-      <h2 data-i18n-html="cta_h2">Sichere dir jetzt deinen<br>Festpreis – 2.850.000 THB</h2>
-      <p class="lead" data-i18n="cta_lead">Mit steigenden Baukosten ab 2027 ist das aktuelle Preisfenster zeitlich begrenzt. Nimm jetzt unverbindlich Kontakt auf.</p>
+    <div class="cta-head">
+      <div class="cta-img cta-img--l fade"><img src="images/pawinne-3.jpg" class="zoom" alt="Khun Pawinee" loading="lazy"/></div>
+      <div class="cta-intro fade">
+        <p class="eyebrow eyebrow-gold eyebrow-center" data-i18n="cta_eye">Bereit für dein Paradies?</p>
+        <h2 data-i18n-html="cta_h2">Sichere dir jetzt deinen<br>Festpreis – 2.850.000 THB</h2>
+        <p class="lead" data-i18n="cta_lead">Mit steigenden Baukosten ab 2027 ist das aktuelle Preisfenster zeitlich begrenzt. Nimm jetzt unverbindlich Kontakt auf.</p>
+      </div>
+      <div class="cta-img cta-img--r fade"><img src="images/pawinne-2.jpg" class="zoom" alt="Khun Pawinee" loading="lazy"/></div>
     </div>
     <div class="contact-grid">
       <div class="ccol fade">
@@ -871,6 +896,15 @@
         </div>
       </div>
       <div class="ccol fade">
+        <span class="ccard-action ccard-action--empty" aria-hidden="true">&nbsp;</span>
+        <div class="ccard">
+          <div class="ccard-icon">📍</div>
+          <div class="ccard-lbl" data-i18n="cc3_l">Standort</div>
+          <div class="ccard-val">Pranburi, Prachuap Khiri Khan</div>
+          <div class="ccard-note" data-i18n="cc3_n">Thailand · 20 km südlich von Hua Hin</div>
+        </div>
+      </div>
+      <div class="ccol fade">
         <a class="ccard-action" href="tel:+66863523653" data-i18n="cc2_link">Jetzt anrufen</a>
         <div class="ccard">
           <div class="ccard-icon">📱</div>
@@ -878,15 +912,6 @@
           <div class="ccard-val"><button type="button" class="copy-val" data-copy="+66 86 352 3653" data-copied="copied_phone">+66 86 352 3653</button></div>
           <div class="copy-msg" role="status" aria-live="polite"></div>
           <div class="ccard-note" data-i18n="cc2_n">Khun Pawinee · Projektleitung</div>
-        </div>
-      </div>
-      <div class="ccol fade">
-        <span class="ccard-action ccard-action--empty" aria-hidden="true">&nbsp;</span>
-        <div class="ccard">
-          <div class="ccard-icon">📍</div>
-          <div class="ccard-lbl" data-i18n="cc3_l">Standort</div>
-          <div class="ccard-val">Pranburi, Prachuap Khiri Khan</div>
-          <div class="ccard-note" data-i18n="cc3_n">Thailand · 20 km südlich von Hua Hin</div>
         </div>
       </div>
     </div>
@@ -949,7 +974,6 @@
       </div>
     </div>
     <div class="footer-contact">
-      <img class="fc-img fc-left zoom" src="images/pawinne-3.jpg" alt="Khun Pawinee" loading="lazy"/>
       <div class="fc-text">
         <h5 data-i18n="foot_contact">Kontakt</h5>
         <ul>
@@ -958,7 +982,6 @@
           <li><a href="#lage">📍 Pranburi, Thailand</a></li>
         </ul>
       </div>
-      <img class="fc-img fc-right zoom" src="images/pawinne-2.jpg" alt="Khun Pawinee" loading="lazy"/>
     </div>
     <div class="footer-bottom">
       <p>© 2026 A-Frames in Paradise · AIP 2</p>

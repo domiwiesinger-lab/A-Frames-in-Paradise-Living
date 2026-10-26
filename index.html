@@ -6,11 +6,11 @@
   <!-- Einblend-Animationen nur mit funktionierendem JS; bei jedem Skriptfehler bleibt alles sichtbar -->
   <script>document.documentElement.classList.add('js');window.addEventListener('error',function(){document.documentElement.classList.remove('js');});</script>
   <title>A-Frames in Paradise – Eco-Luxus am See · Pranburi, Thailand</title>
-  <meta name="description" content="Schlüsselfertiges A-Frame Eco-Luxus-Haus (126 m²) auf 800 m² privatem Seegrundstück in Pranburi, Thailand. 2,85 Mio. THB / 75.200 € – bezugsfertig in 2,5 Monaten." />
+  <meta name="description" content="Schlüsselfertiges A-Frame Eco-Luxus-Haus (126 m²) auf 800 m² privatem Seegrundstück in Pranburi, Thailand. 2,85 Mio. THB (ca. 75.000 €, je nach aktuellem Wechselkurs) – nach aktuellem Stand in ca. 2,5 Monaten bezugsfertig." />
   <meta name="keywords" content="A-Frame Thailand, Haus kaufen Pranburi, Thailand Immobilien Expat, Auswandern Thailand, Seegrundstück, Hard Asset" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="A-Frames in Paradise – Dein Eco-Luxus-Zuhause in Thailand" />
-  <meta property="og:description" content="Komplett schlüsselfertiges A-Frame Haus + 800 m² Seegrundstück in Pranburi für 2,85 Mio. THB / 75.200 €." />
+  <meta property="og:description" content="Komplett schlüsselfertiges A-Frame Haus + 800 m² Seegrundstück in Pranburi für 2,85 Mio. THB (ca. 75.000 €, je nach aktuellem Wechselkurs)." />
   <meta property="og:image" content="images/house-1.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -162,6 +162,8 @@
     .stats__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:2rem; text-align:center; }
     .stat-num { font-family:var(--serif); font-size:2.3rem; font-weight:700; color:var(--green); line-height:1; margin-bottom:.4rem; }
     .stat-num span { color:var(--gold); }
+    .approx { font-size:.62em; font-weight:600; letter-spacing:0; }
+    .stat-num .approx { color:inherit; }
     .stat-note { font-size:.74rem; color:var(--ink-muted); font-style:italic; margin:-.15rem 0 .35rem; }
     .stat-label { font-size:.82rem; color:var(--ink-muted); font-weight:500; }
 
@@ -174,6 +176,8 @@
     .vcard__icon { width:50px; height:50px; background:var(--green-bg); border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1.15rem; }
     .vcard h3 { font-size:1.08rem; margin-bottom:.55rem; }
     .vcard p  { font-size:.88rem; color:var(--ink-soft); line-height:1.65; }
+    .vcard .vcard__price { font-family:var(--serif); font-size:1.15rem; font-weight:700; color:var(--green); margin-top:.8rem; }
+    .vcard .vcard__note { font-size:.8rem; color:var(--ink-muted); margin-top:.3rem; }
 
     /* ─── SPLIT LAYOUT ─── */
     .split { display:grid; grid-template-columns:1fr 1fr; gap:3.6rem; align-items:center; }
@@ -198,7 +202,7 @@
     .twin-imgs { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin-top:.9rem; }
     .twin-imgs .img-wrap { box-shadow:var(--shadow); }
     .twin-imgs img { aspect-ratio:1/1; }
-    .house-imgs { display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; margin-top:1.3rem; }
+    .house-imgs { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.6rem; }
     .house-imgs .img-wrap { box-shadow:var(--shadow); }
     .house-imgs img { aspect-ratio:4/3; }
 
@@ -259,12 +263,16 @@
     /* ─── PLOTS ─── */
     .plot-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:3.4rem; align-items:center; margin-top:2.6rem; }
     .plot-map { border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-lg); }
-    .plot-text-img { box-shadow:var(--shadow); }
-    .plot-text-img img { height:auto; }
-    .plot-badges { display:grid; grid-template-columns:repeat(4,1fr); gap:.7rem; margin:1.6rem 0; }
+    .plot-badges { display:grid; grid-template-columns:repeat(2,1fr); gap:.7rem; margin:1rem 0 .5rem; }
     .plot-badge { background:var(--green-bg); border:1px solid #C2D9C8; border-radius:10px; padding:.85rem .6rem; text-align:center; }
     .plot-badge .pb-num { font-family:var(--serif); font-size:1.5rem; font-weight:700; color:var(--green); }
     .plot-badge .pb-st { font-size:.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-top:.15rem; }
+    .plot-badge .pb-area { font-size:.8rem; color:var(--ink-soft); margin-top:.55rem; line-height:1.45; }
+    .plot-badge .pb-price { font-size:.92rem; font-weight:700; color:var(--green); margin-top:.45rem; }
+    .plot-badge .pb-eur { font-size:.78rem; color:var(--ink-muted); margin-top:.1rem; }
+    .plot-badge .pb-eur .approx { font-size:1em; font-weight:400; }
+    .plot-rai { font-size:.88rem; color:var(--ink-soft); font-weight:600; }
+    .plot-eur-note { font-size:.75rem; color:var(--ink-muted); font-style:italic; }
     .plot-facts { list-style:none; margin:1.4rem 0; }
     .plot-facts li { display:flex; gap:.7rem; align-items:center; padding:.5rem 0; font-size:.9rem; color:var(--ink-soft); }
     .plot-facts li .ico { font-size:1.1rem; }
@@ -461,8 +469,8 @@
   <div class="container">
     <div class="hero__content">
       <div class="hero__badge" data-i18n="hero_badge">🌿 Pranburi, Thailand · Seegrundstück · Eco-Luxus</div>
-      <h1 data-i18n-html="hero_h1">Dein <em>Paradies</em> am See<br>Schlüsselfertig aktuell möglich nach 2,5 Monaten.</h1>
-      <p class="hero__sub" data-i18n-html="hero_sub">Ein komplettes A-Frame Eco-Luxus-Haus (126 m²) auf 800 m² privatem Seegrundstück in Pranburi – für nur <strong>2,85 Mio. THB / 75.200 €</strong>.</p>
+      <h1 data-i18n-html="hero_h1">Dein <em>Paradies</em> am See<br>Schlüsselfertig nach aktuellem Stand in ca. 2,5 Monaten.</h1>
+      <p class="hero__sub" data-i18n-html="hero_sub">Ein komplettes A-Frame Eco-Luxus-Haus (126 m²) auf 800 m² privatem Seegrundstück in Pranburi – für nur <strong>2,85 Mio. THB</strong> (ca. 75.000 €, je nach aktuellem Wechselkurs).</p>
       <div class="hero__btns">
         <a href="#kontakt" class="btn btn-gold" data-i18n="hero_btn1">Angebot anfordern →</a>
         <a href="#angebot" class="btn btn-ghost" data-i18n="hero_btn2">Mehr erfahren</a>
@@ -474,13 +482,13 @@
         </div>
         <div class="pill-sep"></div>
         <div>
-          <div class="pill-num" style="font-size:1.45rem">≈ 75.200 €</div>
-          <div class="pill-label" data-i18n="pill_allin">Schlüsselfertig · All-in</div>
+          <div class="pill-num" style="font-size:1.45rem"><span class="approx" data-i18n="approx">ca.</span> 75.000 €</div>
+          <div class="pill-label" data-i18n="pill_allin">je nach aktuellem Wechselkurs</div>
         </div>
         <div class="pill-sep"></div>
         <div>
-          <div class="pill-num" style="font-size:1.35rem">2,5 <span data-i18n="pill_months">Monate</span></div>
-          <div class="pill-label" data-i18n="pill_ready">Bis zum Einzug</div>
+          <div class="pill-num" style="font-size:1.35rem"><span class="approx" data-i18n="approx">ca.</span> 2,5 <span data-i18n="pill_months">Monate</span></div>
+          <div class="pill-label" data-i18n="pill_ready">bis zum Einzug, nach aktuellem Stand</div>
         </div>
       </div>
     </div>
@@ -510,8 +518,8 @@
     <div class="stats__grid">
       <div class="fade"><div class="stat-num">126 m²</div><div class="stat-label" data-i18n="stat1">Wohnfläche auf 2 Ebenen</div></div>
       <div class="fade"><div class="stat-num">800 m²</div><div class="stat-label" data-i18n="stat2">Privates Seegrundstück</div></div>
-      <div class="fade"><div class="stat-num">75.000 €</div><div class="stat-note" data-i18n="stat3_note">je nach aktuellem Kurs</div><div class="stat-label" data-i18n="stat3">Gesamtpreis schlüsselfertig</div></div>
-      <div class="fade"><div class="stat-num">2,5 <span data-i18n="stat4m">Mo.</span></div><div class="stat-label" data-i18n="stat4">Bis zum Einzug</div></div>
+      <div class="fade"><div class="stat-num"><span class="approx" data-i18n="approx">ca.</span> 75.000 €</div><div class="stat-note" data-i18n="stat3_note">je nach aktuellem Wechselkurs</div><div class="stat-label" data-i18n="stat3">Gesamtpreis schlüsselfertig</div></div>
+      <div class="fade"><div class="stat-num"><span class="approx" data-i18n="approx">ca.</span> 2,5 <span data-i18n="stat4m">Mo.</span></div><div class="stat-label" data-i18n="stat4">Bis zum Einzug, nach aktuellem Stand</div></div>
       <div class="fade"><div class="stat-num"><span>–56 %</span></div><div class="stat-label" data-i18n="stat5">Unter Marktdurchschnitt</div></div>
     </div>
   </div>
@@ -530,7 +538,7 @@
       <div class="vcard fade"><div class="vcard__icon">🏛️</div><h3 data-i18n="v1_h">Sicherer Hard Asset</h3><p data-i18n="v1_p">Immobilien schützen Kapital verlässlich. Während Bargeld an Kaufkraft verliert, bewahrt und steigert Grund und Boden seinen Wert – besonders in einem Wachstumsmarkt wie Thailand.</p></div>
       <div class="vcard fade"><div class="vcard__icon">📈</div><h3 data-i18n="v2_h">Wachsender Markt</h3><p data-i18n="v2_p">Pranburi und das Hua-Hin-Dreieck entwickeln sich rasant. Steigende Touristenzahlen und eine wachsende Expat-Gemeinschaft treiben die Nachfrage und damit die Immobilienpreise.</p></div>
       <div class="vcard fade"><div class="vcard__icon">🌴</div><h3 data-i18n="v3_h">Tropische Freiheit</h3><p data-i18n="v3_p">Leben, wo andere Urlaub machen. Nationalpark, privater See und Strände direkt vor der Tür – ruhig, privat, außergewöhnlich.</p></div>
-      <div class="vcard fade"><div class="vcard__icon">🔑</div><h3 data-i18n="v4_h">Komplett schlüsselfertig</h3><p data-i18n="v4_p">Kein Baustress, keine versteckten Kosten. Du erhältst dein Traumhaus inklusive Grundstück und allen Anschlüssen – bezugsfertig in 2,5 Monaten.</p></div>
+      <div class="vcard fade"><div class="vcard__icon">🔑</div><h3 data-i18n="v4_h">Komplett schlüsselfertig und bezugsfertig</h3><p data-i18n="v4_p">Nach aktuellem Stand ca. 2,5 Monate bis zum Einzug</p><p class="vcard__price" data-i18n="v4_price">Sonderpreis: 2,85 Millionen Baht</p><p class="vcard__note" data-i18n="v4_eur">Aktueller Gegenwert: ca. 75.000 Euro, abhängig vom aktuellen Wechselkurs</p></div>
     </div>
   </div>
 </section>
@@ -542,11 +550,7 @@
       <div class="fade">
         <div class="img-wrap">
           <img src="images/house-1.jpg" class="zoom" alt="A-Frame Eco-Luxus Haus in Pranburi" loading="lazy"/>
-          <div class="img-badge" data-i18n="house_badge">✓ Schlüsselfertig in 2,5 Monaten</div>
-        </div>
-        <div class="twin-imgs">
-          <div class="img-wrap"><img src="images/house-2.jpg" class="zoom" alt="A-Frame Seitenansicht mit Bergblick" loading="lazy"/></div>
-          <div class="img-wrap"><img src="images/aerial.jpg" class="zoom" alt="Luftaufnahme A-Frame mit Pool und See" loading="lazy"/></div>
+          <div class="img-badge" data-i18n="house_badge">✓ Nach aktuellem Stand in ca. 2,5 Monaten bezugsfertig</div>
         </div>
       </div>
       <div class="fade">
@@ -560,12 +564,12 @@
           <div class="spec"><div class="spec-icon">🛏</div><div><div class="spec-lbl" data-i18n="s3_l">Schlafzimmer</div><div class="spec-val" data-i18n="s3_v">1 + Loft-Option</div></div></div>
           <div class="spec"><div class="spec-icon">🚿</div><div><div class="spec-lbl" data-i18n="s4_l">Badezimmer</div><div class="spec-val">2 (EG + OG)</div></div></div>
         </div>
-        <div class="house-imgs">
-          <div class="img-wrap"><img src="images/a-frames-fertig-teil-8.jpg" class="zoom" alt="A-Frame fertiggestellt" loading="lazy"/></div>
-          <div class="img-wrap"><img src="images/see-top.png" class="zoom" alt="Luftaufnahme See mit A-Frames" loading="lazy"/></div>
-          <div class="img-wrap"><img src="images/construction.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
-        </div>
       </div>
+    </div>
+    <div class="house-imgs fade">
+      <div class="img-wrap"><img src="images/a-frames-fertig-teil-8.jpg" class="zoom" alt="A-Frame fertiggestellt" loading="lazy"/></div>
+      <div class="img-wrap"><img src="images/see-top.png" class="zoom" alt="Luftaufnahme See mit A-Frames" loading="lazy"/></div>
+      <div class="img-wrap"><img src="images/construction.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
     </div>
   </div>
 </section>
@@ -638,14 +642,14 @@
   <div class="container">
     <div class="fade" style="text-align:center">
       <p class="eyebrow eyebrow-center" data-i18n="proc_eye">Der Ablauf</p>
-      <h2 data-i18n="proc_h2">In nur 2,5 Monaten ins eigene Zuhause</h2>
+      <h2 data-i18n="proc_h2">Nach aktuellem Stand in ca. 2,5 Monaten bezugsfertig</h2>
       <div class="divider" style="margin:1.1rem auto 1.7rem"></div>
       <p class="lead" style="margin:0 auto" data-i18n="proc_lead">Von der ersten Beratung bis zur Schlüsselübergabe – vollständig geplant, gebaut und übergeben.</p>
     </div>
     <div class="timeline">
       <div class="tstep fade"><div class="tstep__dot">1</div><h3 data-i18n="proc1_h">Beratung & Auswahl</h3><p data-i18n="proc1_p">Wir besprechen deine Wünsche und wählen gemeinsam dein Seegrundstück. Virtuelle Besichtigung jederzeit möglich.</p></div>
       <div class="tstep fade"><div class="tstep__dot">2</div><h3 data-i18n="proc2_h">Vertrag & Festpreis</h3><p data-i18n="proc2_p">Transparenter Festpreis, klare Verträge. Statik- und Architektennachweis inklusive.</p></div>
-      <div class="tstep fade"><div class="tstep__dot">3</div><h3 data-i18n="proc3_h">Bau in 2,5 Monaten</h3><p data-i18n="proc3_p">Dein A-Frame entsteht schlüsselfertig – Bäder, Küche und alle Anschlüsse inklusive.</p></div>
+      <div class="tstep fade"><div class="tstep__dot">3</div><h3 data-i18n="proc3_h">Bau in ca. 2,5 Monaten (nach aktuellem Stand)</h3><p data-i18n="proc3_p">Dein A-Frame entsteht schlüsselfertig – Bäder, Küche und alle Anschlüsse inklusive.</p></div>
       <div class="tstep fade"><div class="tstep__dot">4</div><h3 data-i18n="proc4_h">Schlüsselübergabe</h3><p data-i18n="proc4_p">Hausnummer, Adresse und gelbes Hausbuch (Tabien Baan) – du ziehst ein mit dem Koffer.</p></div>
     </div>
   </div>
@@ -676,12 +680,12 @@
       <div class="pcard pcard-hl fade" data-badge="⭐ Unser Angebot">
         <div class="pcard-lbl pcard-lbl-hl" data-i18n="pc_ours">A-Frames in Paradise</div>
         <div class="pcard-amount pcard-green">2.850.000 THB</div>
-        <div class="pcard-sub">≈ 75.200 € · All-inclusive</div>
+        <div class="pcard-sub" data-i18n="eur_note">ca. 75.000 € · je nach aktuellem Wechselkurs</div>
         <ul class="pcard-items">
           <li><span class="chk">✓</span> <span data-i18n="po1">800 m² Seegrundstück inklusive</span></li>
           <li><span class="chk">✓</span> <span data-i18n="po2">Strom, Wasser, Internet</span></li>
           <li><span class="chk">✓</span> <span data-i18n="po3">126 m², 2 Etagen, A-Frame</span></li>
-          <li><span class="chk">✓</span> <span data-i18n="po4">Schlüsselfertig in 2,5 Monaten</span></li>
+          <li><span class="chk">✓</span> <span data-i18n="po4">Nach aktuellem Stand in ca. 2,5 Monaten bezugsfertig</span></li>
         </ul>
       </div>
     </div>
@@ -690,8 +694,8 @@
       <strong>3.645.817 THB · über 95.000 € · 56 % unter Marktpreis</strong>
     </div>
     <div class="price-breakdown fade">
-      <div class="bd-item"><div class="bd-lbl" data-i18n="bd3_l">Gesamtpreis All-in</div><div class="bd-val" style="color:#7CDFA4">2.850.000 THB</div><div class="bd-note">≈ 75.200 € · fester Preis</div></div>
-      <div class="bd-item"><div class="bd-lbl" data-i18n="bd4_l">Bezugsfertig ab</div><div class="bd-val">2,5 <span data-i18n="bd4_m">Monate</span></div><div class="bd-note" data-i18n="bd4_n">nach Vertragsunterzeichnung</div></div>
+      <div class="bd-item"><div class="bd-lbl" data-i18n="bd3_l">Gesamtpreis All-in</div><div class="bd-val" style="color:#7CDFA4">2.850.000 THB</div><div class="bd-note" data-i18n="eur_note">ca. 75.000 € · je nach aktuellem Wechselkurs</div></div>
+      <div class="bd-item"><div class="bd-lbl" data-i18n="bd4_l">Bezugsfertig nach aktuellem Stand</div><div class="bd-val"><span class="approx" data-i18n="approx">ca.</span> 2,5 <span data-i18n="bd4_m">Monate</span></div><div class="bd-note" data-i18n="bd4_n">nach Vertragsunterzeichnung</div></div>
     </div>
   </div>
 </section>
@@ -710,13 +714,14 @@
         <div class="plot-map"><img src="images/neue-aufteilung.jpg" class="zoom" alt="Grundstücksaufteilung AIP 2" loading="lazy"/></div>
       </div>
       <div class="fade">
-        <div class="img-wrap plot-text-img"><img src="images/text-seegrundstuecke.jpg" class="zoom" alt="Übersicht der Seegrundstücke Plot 1, 5, 6 und 7" loading="lazy"/></div>
+        <p class="plot-rai" data-i18n="plot_rai">AFIP 9 Rai Land · Preis pro Rai (1.600 m²) = 2,8 Mio. Baht</p>
         <div class="plot-badges">
-          <div class="plot-badge"><div class="pb-num">1</div><div class="pb-st" data-i18n="plot_avail">Verfügbar</div></div>
-          <div class="plot-badge"><div class="pb-num">5</div><div class="pb-st" data-i18n="plot_avail">Verfügbar</div></div>
-          <div class="plot-badge"><div class="pb-num">6</div><div class="pb-st" data-i18n="plot_avail">Verfügbar</div></div>
-          <div class="plot-badge"><div class="pb-num">7</div><div class="pb-st" data-i18n="plot_avail">Verfügbar</div></div>
+          <div class="plot-badge"><div class="pb-num">1</div><div class="pb-st" data-i18n="plot_avail">Verfügbar</div><div class="pb-area">3 ngan 75 sqw<br>1.500 m²</div><div class="pb-price">2.625.000 THB</div><div class="pb-eur"><span data-i18n="approx">ca.</span> 70.187 €</div></div>
+          <div class="plot-badge"><div class="pb-num">5</div><div class="pb-st" data-i18n="plot_avail">Verfügbar</div><div class="pb-area">3 ngan 61,11 sqw<br>1.444,44 m²</div><div class="pb-price">2.527.770 THB</div><div class="pb-eur"><span data-i18n="approx">ca.</span> 67.588 €</div></div>
+          <div class="plot-badge"><div class="pb-num">6</div><div class="pb-st" data-i18n="plot_avail">Verfügbar</div><div class="pb-area">2 ngan 31,41 sqw<br>925,64 m²</div><div class="pb-price">1.619.870 THB</div><div class="pb-eur"><span data-i18n="approx">ca.</span> 43.312 €</div></div>
+          <div class="plot-badge"><div class="pb-num">7</div><div class="pb-st" data-i18n="plot_avail">Verfügbar</div><div class="pb-area">1 rai 2 ngan 92,91 sqw<br>2.771,64 m²</div><div class="pb-price">4.850.370 THB</div><div class="pb-eur"><span data-i18n="approx">ca.</span> 129.689 €</div></div>
         </div>
+        <p class="plot-eur-note" data-i18n="plot_eur_note">Europreise ca., je nach aktuellem Wechselkurs.</p>
         <ul class="plot-facts">
           <li><span class="ico">🌊</span><span data-i18n="plot_f2">Direkter Zugang zum privaten See</span></li>
           <li><span class="ico">⛰️</span><span data-i18n="plot_f4">Bergblick auf Khao Sam Roi Yot</span></li>
@@ -908,7 +913,7 @@
     </div>
     <div class="footer-bottom">
       <p>© 2026 A-Frames in Paradise · AIP 2</p>
-      <p>2.850.000 THB ≈ 75.200 € · Seegrundstück + A-Frame · Schlüsselfertig</p>
+      <p data-i18n="foot_price">2.850.000 THB · ca. 75.000 € je nach aktuellem Wechselkurs · Seegrundstück + A-Frame · Schlüsselfertig</p>
     </div>
   </div>
 </footer>
@@ -930,20 +935,20 @@ const T = {
   de: {
     nav_offer:"Das Angebot", nav_see:"Der See", nav_land:"Grundstück", nav_prices:"Preise", nav_loc:"Lage", nav_gallery:"Galerie", nav_cta:"Jetzt anfragen",
     hero_badge:"🌿 Pranburi, Thailand · Seegrundstück · Eco-Luxus",
-    hero_h1:'Dein <em>Paradies</em> am See<br>Schlüsselfertig aktuell möglich nach 2,5 Monaten.',
-    hero_sub:'Ein komplettes A-Frame Eco-Luxus-Haus (126 m²) auf 800 m² privatem Seegrundstück in Pranburi – für nur <strong>2,85 Mio. THB / 75.200 €</strong>.',
+    hero_h1:'Dein <em>Paradies</em> am See<br>Schlüsselfertig nach aktuellem Stand in ca. 2,5 Monaten.',
+    hero_sub:'Ein komplettes A-Frame Eco-Luxus-Haus (126 m²) auf 800 m² privatem Seegrundstück in Pranburi – für nur <strong>2,85 Mio. THB</strong> (ca. 75.000 €, je nach aktuellem Wechselkurs).',
     hero_btn1:"Angebot anfordern →", hero_btn2:"Mehr erfahren",
-    pill_total:"Gesamtpreis inkl. Grundstück", pill_allin:"Schlüsselfertig · All-in", pill_months:"Monate", pill_ready:"Bis zum Einzug",
+    pill_total:"Gesamtpreis inkl. Grundstück", pill_allin:"je nach aktuellem Wechselkurs", pill_months:"Monate", approx:"ca.", pill_ready:"bis zum Einzug, nach aktuellem Stand",
     scroll_down:"Entdecken",
     urgency_text:'⚠ <strong>Achtung:</strong> Baukosten steigen ab <strong>2027</strong> um 3–5 % pro Quartal.',
     urgency_price:"Aktueller Festpreis ist zeitlich begrenzt.", urgency_cta:"Jetzt Preis sichern →",
-    stat1:"Wohnfläche auf 2 Ebenen", stat2:"Privates Seegrundstück", stat3:"Gesamtpreis schlüsselfertig", stat3_note:"je nach aktuellem Kurs", stat4:"Bis zum Einzug", stat4m:"Mo.", stat5:"Unter Marktdurchschnitt",
+    stat1:"Wohnfläche auf 2 Ebenen", stat2:"Privates Seegrundstück", stat3:"Gesamtpreis schlüsselfertig", stat3_note:"je nach aktuellem Wechselkurs", eur_note:"ca. 75.000 € · je nach aktuellem Wechselkurs", stat4:"Bis zum Einzug, nach aktuellem Stand", stat4m:"Mo.", stat5:"Unter Marktdurchschnitt",
     vp_eyebrow:"Warum A-Frames in Paradise?", vp_h2:"Mehr als ein Zuhause.<br>Eine kluge Entscheidung.", vp_lead:"In Zeiten globaler Unsicherheit und steigender Inflation bietet ein Hard Asset in Thailand eine der attraktivsten Schutzstrategien für Expats und internationale Investoren.",
     v1_h:"Sicherer Hard Asset", v1_p:"Immobilien schützen Kapital verlässlich. Während Bargeld an Kaufkraft verliert, bewahrt und steigert Grund und Boden seinen Wert – besonders in einem Wachstumsmarkt wie Thailand.",
     v2_h:"Wachsender Markt", v2_p:"Pranburi und das Hua-Hin-Dreieck entwickeln sich rasant. Steigende Touristenzahlen und eine wachsende Expat-Gemeinschaft treiben die Nachfrage und damit die Immobilienpreise.",
     v3_h:"Tropische Freiheit", v3_p:"Leben, wo andere Urlaub machen. Nationalpark, privater See und Strände direkt vor der Tür – ruhig, privat, außergewöhnlich.",
-    v4_h:"Komplett schlüsselfertig", v4_p:"Kein Baustress, keine versteckten Kosten. Du erhältst dein Traumhaus inklusive Grundstück und allen Anschlüssen – bezugsfertig in 2,5 Monaten.",
-    house_badge:"✓ Schlüsselfertig in 2,5 Monaten", house_eye:"Das Haus", house_h2:"A-Frame Eco-Luxus auf zwei Ebenen",
+    v4_h:"Komplett schlüsselfertig und bezugsfertig", v4_p:"Nach aktuellem Stand ca. 2,5 Monate bis zum Einzug", v4_price:"Sonderpreis: 2,85 Millionen Baht", v4_eur:"Aktueller Gegenwert: ca. 75.000 Euro, abhängig vom aktuellen Wechselkurs",
+    house_badge:"✓ Nach aktuellem Stand in ca. 2,5 Monaten bezugsfertig", house_eye:"Das Haus", house_h2:"A-Frame Eco-Luxus auf zwei Ebenen",
     house_p:"Das ikonische A-Frame Design kombiniert nordisches Architekturerbe mit tropischem Eco-Luxus. Natürliche Materialien, raumhohe Glasfronten, hohe Decken und eine Terrasse mit Seeblick – auf 126 m² Wohnfläche.",
     s1_l:"Wohnfläche", s2_l:"Bauweise", s2_v:"2 Ebenen, A-Frame", s3_l:"Schlafzimmer", s3_v:"1 + Loft-Option", s4_l:"Badezimmer",
     land_eye:"Das Grundstück", land_h2:"800 m² am privaten See – komplett erschlossen",
@@ -956,21 +961,21 @@ const T = {
     see2_h:"Der See füllt sich", see2_p:"Frisches Wasser füllt das Becken – ein neuer See entsteht vor den Bergen.",
     see3_h:"Kristallklares Wasser", see3_p:"Nach wenigen Wochen: ein ruhiger See zum Schwimmen, Angeln und Entspannen.",
     see4_h:"Dein Sonnenuntergang", see4_p:"Jeden Abend goldenes Licht und Bergpanorama – direkt von deiner Terrasse.",
-    proc_eye:"Der Ablauf", proc_h2:"In nur 2,5 Monaten ins eigene Zuhause",
+    proc_eye:"Der Ablauf", proc_h2:"Nach aktuellem Stand in ca. 2,5 Monaten bezugsfertig",
     proc_lead:"Von der ersten Beratung bis zur Schlüsselübergabe – vollständig geplant, gebaut und übergeben.",
     proc1_h:"Beratung & Auswahl", proc1_p:"Wir besprechen deine Wünsche und wählen gemeinsam dein Seegrundstück. Virtuelle Besichtigung jederzeit möglich.",
     proc2_h:"Vertrag & Festpreis", proc2_p:"Transparenter Festpreis, klare Verträge. Statik- und Architektennachweis inklusive.",
-    proc3_h:"Bau in 2,5 Monaten", proc3_p:"Dein A-Frame entsteht schlüsselfertig – Bäder, Küche und alle Anschlüsse inklusive.",
+    proc3_h:"Bau in ca. 2,5 Monaten (nach aktuellem Stand)", proc3_p:"Dein A-Frame entsteht schlüsselfertig – Bäder, Küche und alle Anschlüsse inklusive.",
     proc4_h:"Schlüsselübergabe", proc4_p:"Hausnummer, Adresse und gelbes Hausbuch (Tabien Baan) – du ziehst ein mit dem Koffer.",
     pc_eye:"Preisvergleich", pc_h2:"56 % unter Marktpreis –<br>ein historisch seltenes Angebot",
     pc_sub:'Ø Hauspreis Pranburi: <strong style="color:#F0D97A">6.495.817 THB</strong>. Unser Komplettangebot inkl. Seegrundstück: <strong style="color:#7CDFA4">2.850.000 THB</strong>.',
     pc_market:"Regionaler Marktdurchschnitt", pm1:"Oft ohne Erschließung", pm2:"12–18 Monate Bauzeit", pm3:"Keine Seelage garantiert", pm4:"Hohe Nebenkosten 10–15 %",
-    pc_ours:"A-Frames in Paradise", po1:"800 m² Seegrundstück inklusive", po2:"Strom, Wasser, Internet", po3:"126 m², 2 Etagen, A-Frame", po4:"Schlüsselfertig in 2,5 Monaten",
+    pc_ours:"A-Frames in Paradise", po1:"800 m² Seegrundstück inklusive", po2:"Strom, Wasser, Internet", po3:"126 m², 2 Etagen, A-Frame", po4:"Nach aktuellem Stand in ca. 2,5 Monaten bezugsfertig",
     savings_p:"Du sparst gegenüber dem regionalen Marktdurchschnitt",
-    bd3_l:"Gesamtpreis All-in", bd4_l:"Bezugsfertig ab", bd4_m:"Monate", bd4_n:"nach Vertragsunterzeichnung",
+    bd3_l:"Gesamtpreis All-in", bd4_l:"Bezugsfertig nach aktuellem Stand", bd4_m:"Monate", bd4_n:"nach Vertragsunterzeichnung",
     plot_eye:"Die Grundstücke", plot_h2:"Noch 4 Seegrundstücke verfügbar",
     plot_lead:"Sichere dir eines von vier privaten Grundstücken in der Anlage AIP 2 – jedes mit direktem Seezugang und Blick auf Khao Sam Roi Yot.",
-    plot_avail:"Verfügbar", plot_f2:"Direkter Zugang zum privaten See", plot_f4:"Bergblick auf Khao Sam Roi Yot", plot_f5:"Jeder Plot hat eine unterschiedliche Grundfläche.", plot_f6:"Strom-, Wasser- und Internetanschlüsse sind verlegt.",
+    plot_avail:"Verfügbar", plot_rai:"AFIP 9 Rai Land · Preis pro Rai (1.600 m²) = 2,8 Mio. Baht", plot_eur_note:"Europreise ca., je nach aktuellem Wechselkurs.", plot_f2:"Direkter Zugang zum privaten See", plot_f4:"Bergblick auf Khao Sam Roi Yot", plot_f5:"Jeder Plot hat eine unterschiedliche Grundfläche.", plot_f6:"Strom-, Wasser- und Internetanschlüsse sind verlegt.",
     plot_box:"Anlage AIP 2 · Pranburi, Prachuap Khiri Khan · Plots 1, 5, 6 und 7 verfügbar",
     loc_eye:"Die Lage", loc_h2:"Pranburi – Thailands bestgehütetes Geheimnis",
     loc_lead:"Nur 20 km vom Zentrum Pranburis, 42 km vom Flughafen Hua Hin und circa 3,5 Stunden von Bangkok – mit geplanter Schnellzugverbindung schon bald deutlich näher.",
@@ -994,26 +999,26 @@ const T = {
     f_status_alt:"Nichts geöffnet? Kopiere den Anfragetext und schicke ihn an unsere E-Mail-Adresse – oder ruf uns an.",
     f_copy_label:"Dein Anfragetext", f_copy:"Anfragetext kopieren", f_copied:"✓ Kopiert", f_copy_manual:"Bitte den markierten Text manuell kopieren.",
     foot_desc:"Schlüsselfertige Eco-Luxus-Häuser am See in Pranburi, Thailand – für Expats und internationale Investoren.",
-    foot_nav:"Navigation", foot_contact:"Kontakt"
+    foot_nav:"Navigation", foot_contact:"Kontakt", foot_price:"2.850.000 THB · ca. 75.000 € je nach aktuellem Wechselkurs · Seegrundstück + A-Frame · Schlüsselfertig"
   },
 
   en: {
     nav_offer:"The Property", nav_see:"The Lake", nav_land:"Land Plot", nav_prices:"Prices", nav_loc:"Location", nav_gallery:"Gallery", nav_cta:"Enquire Now",
     hero_badge:"🌿 Pranburi, Thailand · Lakefront Plot · Eco-Luxury",
-    hero_h1:'Your <em>Paradise</em> by the Lake<br>Turnkey – currently possible after 2.5 months.',
-    hero_sub:'A complete A-Frame Eco-Luxury house (126 m²) on an 800 m² private lakefront plot in Pranburi – for only <strong>2.85M THB / €75,200</strong>.',
+    hero_h1:'Your <em>Paradise</em> by the Lake<br>Turnkey – as things stand, in approx. 2.5 months.',
+    hero_sub:'A complete A-Frame Eco-Luxury house (126 m²) on an 800 m² private lakefront plot in Pranburi – for only <strong>2.85M THB</strong> (approx. €75,000, depending on the current exchange rate).',
     hero_btn1:"Request Offer →", hero_btn2:"Learn More",
-    pill_total:"Total price incl. land", pill_allin:"Turnkey · All-inclusive", pill_months:"Months", pill_ready:"Until Move-in",
+    pill_total:"Total price incl. land", pill_allin:"depending on the current exchange rate", pill_months:"Months", approx:"approx.", pill_ready:"until move-in, as things stand",
     scroll_down:"Discover",
     urgency_text:'⚠ <strong>Notice:</strong> Construction costs rising <strong>3–5 % per quarter from 2027</strong>.',
     urgency_price:"Current fixed price is time-limited.", urgency_cta:"Lock in your price now →",
-    stat1:"Living area on 2 levels", stat2:"Private lakefront plot", stat3:"Total turnkey price", stat3_note:"depending on the current exchange rate", stat4:"Until move-in", stat4m:"mo.", stat5:"Below market average",
+    stat1:"Living area on 2 levels", stat2:"Private lakefront plot", stat3:"Total turnkey price", stat3_note:"depending on the current exchange rate", eur_note:"approx. €75,000 · depending on the current exchange rate", stat4:"Until move-in, as things stand", stat4m:"mo.", stat5:"Below market average",
     vp_eyebrow:"Why A-Frames in Paradise?", vp_h2:"More than a home.<br>A smart investment.", vp_lead:"In times of global uncertainty and rising inflation, a hard asset in Thailand offers one of the most attractive protection strategies for expats and international investors.",
     v1_h:"Secure Hard Asset", v1_p:"Real estate reliably protects capital. While cash loses purchasing power, land and property preserve and grow in value – especially in a growth market like Thailand.",
     v2_h:"Growing Market", v2_p:"Pranburi and the Hua Hin triangle are developing rapidly. Rising tourist numbers and a growing expat community are driving demand and property prices.",
     v3_h:"Tropical Freedom", v3_p:"Live where others vacation. National park, private lake and beaches right at your doorstep – peaceful, private, extraordinary.",
-    v4_h:"Completely Turnkey", v4_p:"No construction stress, no hidden costs. You receive your dream home including land and all utilities – move-in ready in 2.5 months.",
-    house_badge:"✓ Turnkey in 2.5 Months", house_eye:"The House", house_h2:"A-Frame Eco-Luxury on Two Levels",
+    v4_h:"Completely Turnkey and Move-in Ready", v4_p:"As things stand, approx. 2.5 months until move-in", v4_price:"Special price: 2.85 million baht", v4_eur:"Current equivalent: approx. €75,000, depending on the current exchange rate",
+    house_badge:"✓ Move-in ready in approx. 2.5 months, as things stand", house_eye:"The House", house_h2:"A-Frame Eco-Luxury on Two Levels",
     house_p:"The iconic A-Frame design combines Nordic architectural heritage with tropical eco-luxury. Natural materials, floor-to-ceiling glass fronts, high ceilings and a lake-view terrace – across 126 m² of living space.",
     s1_l:"Living area", s2_l:"Structure", s2_v:"2 Levels, A-Frame", s3_l:"Bedrooms", s3_v:"1 + Loft option", s4_l:"Bathrooms",
     land_eye:"The Land", land_h2:"800 m² on a Private Lake – Fully Serviced",
@@ -1026,21 +1031,21 @@ const T = {
     see2_h:"The Lake Fills", see2_p:"Fresh water fills the basin – a new lake forms before the mountains.",
     see3_h:"Crystal-Clear Water", see3_p:"After a few weeks: a calm lake for swimming, fishing and relaxing.",
     see4_h:"Your Sunset", see4_p:"Golden light and mountain panorama every evening – right from your terrace.",
-    proc_eye:"The Process", proc_h2:"Into Your Own Home in Just 2.5 Months",
+    proc_eye:"The Process", proc_h2:"Move-in Ready in Approx. 2.5 Months, as Things Stand",
     proc_lead:"From the first consultation to key handover – fully planned, built and delivered.",
     proc1_h:"Consultation & Selection", proc1_p:"We discuss your wishes and choose your lakefront plot together. Virtual viewing available anytime.",
     proc2_h:"Contract & Fixed Price", proc2_p:"Transparent fixed price, clear contracts. Structural and architectural certification included.",
-    proc3_h:"Built in 2.5 Months", proc3_p:"Your A-Frame is built turnkey – bathrooms, kitchen and all connections included.",
+    proc3_h:"Built in approx. 2.5 months (as things stand)", proc3_p:"Your A-Frame is built turnkey – bathrooms, kitchen and all connections included.",
     proc4_h:"Key Handover", proc4_p:"House number, address and yellow house book (Tabien Baan) – move in with just a suitcase.",
     pc_eye:"Price Comparison", pc_h2:"56 % Below Market Price –<br>A Historically Rare Offer",
     pc_sub:'Avg. house price Pranburi: <strong style="color:#F0D97A">6,495,817 THB</strong>. Our complete offer incl. lakefront plot: <strong style="color:#7CDFA4">2,850,000 THB</strong>.',
     pc_market:"Regional Market Average", pm1:"Often without land services", pm2:"12–18 months build time", pm3:"No lake position guaranteed", pm4:"High extra costs 10–15 %",
-    pc_ours:"A-Frames in Paradise", po1:"800 m² lakefront plot included", po2:"Electricity, water, internet", po3:"126 m², 2 floors, A-Frame", po4:"Turnkey in 2.5 months",
+    pc_ours:"A-Frames in Paradise", po1:"800 m² lakefront plot included", po2:"Electricity, water, internet", po3:"126 m², 2 floors, A-Frame", po4:"Move-in ready in approx. 2.5 months, as things stand",
     savings_p:"You save compared to the regional market average",
-    bd3_l:"Total All-inclusive", bd4_l:"Move-in from", bd4_m:"Months", bd4_n:"after signing",
+    bd3_l:"Total All-inclusive", bd4_l:"Move-in ready, as things stand", bd4_m:"Months", bd4_n:"after signing",
     plot_eye:"The Plots", plot_h2:"Only 4 Lakefront Plots Still Available",
     plot_lead:"Secure one of four private plots in the AIP 2 development – each with direct lake access and Khao Sam Roi Yot mountain views.",
-    plot_avail:"Available", plot_f2:"Direct access to the private lake", plot_f4:"Mountain views of Khao Sam Roi Yot", plot_f5:"Each plot has a different land area.", plot_f6:"Electricity, water and internet connections are laid.",
+    plot_avail:"Available", plot_rai:"AFIP 9 rai land · Price per rai (1,600 m²) = 2.8M baht", plot_eur_note:"Euro prices are approximate, depending on the current exchange rate.", plot_f2:"Direct access to the private lake", plot_f4:"Mountain views of Khao Sam Roi Yot", plot_f5:"Each plot has a different land area.", plot_f6:"Electricity, water and internet connections are laid.",
     plot_box:"AIP 2 development · Pranburi, Prachuap Khiri Khan · Plots 1, 5, 6 and 7 available",
     loc_eye:"The Location", loc_h2:"Pranburi – Thailand's Best-Kept Secret",
     loc_lead:"Just 20 km from Pranburi centre, 42 km from Hua Hin Airport and approx. 3.5 hours from Bangkok – soon much closer with a planned high-speed rail link.",
@@ -1064,26 +1069,26 @@ const T = {
     f_status_alt:"Nothing opened? Copy the enquiry text and send it to our email address – or give us a call.",
     f_copy_label:"Your enquiry text", f_copy:"Copy enquiry text", f_copied:"✓ Copied", f_copy_manual:"Please copy the selected text manually.",
     foot_desc:"Turnkey eco-luxury lake houses in Pranburi, Thailand – for expats and international investors.",
-    foot_nav:"Navigation", foot_contact:"Contact"
+    foot_nav:"Navigation", foot_contact:"Contact", foot_price:"2,850,000 THB · approx. €75,000 depending on the current exchange rate · Lakefront plot + A-Frame · Turnkey"
   },
 
   th: {
     nav_offer:"ข้อเสนอ", nav_see:"ทะเลสาบ", nav_land:"ที่ดิน", nav_prices:"ราคา", nav_loc:"ทำเล", nav_gallery:"แกลเลอรี", nav_cta:"สอบถามเลย",
     hero_badge:"🌿 ปราณบุรี, ไทย · ที่ดินริมทะเลสาบ · Eco-Luxury",
-    hero_h1:'<em>สวรรค์</em>ริมทะเลสาบของคุณ<br>พร้อมกุญแจ – ปัจจุบันเป็นไปได้หลัง 2.5 เดือน',
-    hero_sub:'บ้าน A-Frame Eco-Luxury ครบครัน (126 ม²) บนที่ดินส่วนตัว 800 ม² ริมทะเลสาบ ที่ปราณบุรี – เพียง <strong>2.85 ล้านบาท / 75,200 €</strong>',
+    hero_h1:'<em>สวรรค์</em>ริมทะเลสาบของคุณ<br>พร้อมกุญแจ – ตามสถานะปัจจุบัน ประมาณ 2.5 เดือน',
+    hero_sub:'บ้าน A-Frame Eco-Luxury ครบครัน (126 ม²) บนที่ดินส่วนตัว 800 ม² ริมทะเลสาบ ที่ปราณบุรี – เพียง <strong>2.85 ล้านบาท</strong> (ประมาณ 75,000 € ขึ้นอยู่กับอัตราแลกเปลี่ยนปัจจุบัน)',
     hero_btn1:"ขอรับข้อเสนอ →", hero_btn2:"ดูรายละเอียด",
-    pill_total:"ราคารวมพร้อมที่ดิน", pill_allin:"ครบกุญแจ · ครบชุด", pill_months:"เดือน", pill_ready:"จนกว่าจะเข้าอยู่",
+    pill_total:"ราคารวมพร้อมที่ดิน", pill_allin:"ขึ้นอยู่กับอัตราแลกเปลี่ยนปัจจุบัน", pill_months:"เดือน", approx:"ประมาณ", pill_ready:"จนกว่าจะเข้าอยู่ ตามสถานะปัจจุบัน",
     scroll_down:"ค้นพบ",
     urgency_text:'⚠ <strong>แจ้งเตือน:</strong> ต้นทุนก่อสร้างเพิ่มขึ้น <strong>3–5% ต่อไตรมาส ตั้งแต่ปี 2570</strong>',
     urgency_price:"ราคาคงที่ปัจจุบันมีเวลาจำกัด", urgency_cta:"ล็อคราคาตอนนี้ →",
-    stat1:"พื้นที่อยู่อาศัย 2 ชั้น", stat2:"ที่ดินริมทะเลสาบส่วนตัว", stat3:"ราคารวมพร้อมกุญแจ", stat3_note:"ขึ้นอยู่กับอัตราแลกเปลี่ยนปัจจุบัน", stat4:"จนกว่าจะเข้าอยู่", stat4m:"ด.", stat5:"ต่ำกว่าราคาตลาด",
+    stat1:"พื้นที่อยู่อาศัย 2 ชั้น", stat2:"ที่ดินริมทะเลสาบส่วนตัว", stat3:"ราคารวมพร้อมกุญแจ", stat3_note:"ขึ้นอยู่กับอัตราแลกเปลี่ยนปัจจุบัน", eur_note:"ประมาณ 75,000 € · ขึ้นอยู่กับอัตราแลกเปลี่ยนปัจจุบัน", stat4:"จนกว่าจะเข้าอยู่ ตามสถานะปัจจุบัน", stat4m:"ด.", stat5:"ต่ำกว่าราคาตลาด",
     vp_eyebrow:"ทำไมต้อง A-Frames in Paradise?", vp_h2:"มากกว่าบ้าน<br>การตัดสินใจที่ชาญฉลาด", vp_lead:"ในยุคที่เศรษฐกิจผันผวนและเงินเฟ้อสูง สินทรัพย์แข็ง (Hard Asset) ในไทยถือเป็นกลยุทธ์ป้องกันความเสี่ยงที่น่าสนใจที่สุดสำหรับชาวต่างชาติและนักลงทุน",
     v1_h:"สินทรัพย์แข็ง (Hard Asset)", v1_p:"อสังหาริมทรัพย์ปกป้องเงินทุนได้อย่างมั่นคง ขณะที่เงินสดสูญเสียกำลังซื้อ ที่ดินและทรัพย์สินยังคงและเพิ่มมูลค่า โดยเฉพาะในตลาดเติบโตอย่างไทย",
     v2_h:"ตลาดเติบโต", v2_p:"ปราณบุรีและสามเหลี่ยมหัวหินกำลังพัฒนาอย่างรวดเร็ว นักท่องเที่ยวและชาวต่างชาติที่เพิ่มขึ้นผลักดันความต้องการและราคาอสังหาฯ",
     v3_h:"อิสระในเขตร้อน", v3_p:"ใช้ชีวิตในที่ที่คนอื่นมาพักผ่อน อุทยานแห่งชาติ ทะเลสาบส่วนตัว และชายหาดอยู่ใกล้มือ – สงบ เป็นส่วนตัว พิเศษ",
-    v4_h:"พร้อมกุญแจ ครบชุด", v4_p:"ไม่มีความเครียดจากการก่อสร้าง ไม่มีค่าใช้จ่ายซ่อนเร้น รับบ้านในฝันพร้อมที่ดินและสาธารณูปโภคครบ ใน 2.5 เดือน",
-    house_badge:"✓ พร้อมกุญแจใน 2.5 เดือน", house_eye:"ตัวบ้าน", house_h2:"A-Frame Eco-Luxury สองชั้น",
+    v4_h:"พร้อมกุญแจและพร้อมเข้าอยู่ครบชุด", v4_p:"ตามสถานะปัจจุบัน ประมาณ 2.5 เดือนจนกว่าจะเข้าอยู่", v4_price:"ราคาพิเศษ: 2.85 ล้านบาท", v4_eur:"มูลค่าเทียบเท่าปัจจุบัน: ประมาณ 75,000 ยูโร ขึ้นอยู่กับอัตราแลกเปลี่ยนปัจจุบัน",
+    house_badge:"✓ ตามสถานะปัจจุบัน พร้อมเข้าอยู่ในประมาณ 2.5 เดือน", house_eye:"ตัวบ้าน", house_h2:"A-Frame Eco-Luxury สองชั้น",
     house_p:"การออกแบบ A-Frame ผสมผสานมรดกสถาปัตยกรรมนอร์ดิกกับ Eco-Luxury เขตร้อน วัสดุธรรมชาติ กระจกสูงเต็มผนัง เพดานสูง และระเบียงวิวทะเลสาบ บนพื้นที่ 126 ม²",
     s1_l:"พื้นที่อยู่อาศัย", s2_l:"โครงสร้าง", s2_v:"2 ชั้น, A-Frame", s3_l:"ห้องนอน", s3_v:"1 + ห้องใต้หลังคา", s4_l:"ห้องน้ำ",
     land_eye:"ที่ดิน", land_h2:"800 ม² ริมทะเลสาบส่วนตัว – ครบสาธารณูปโภค",
@@ -1096,21 +1101,21 @@ const T = {
     see2_h:"ทะเลสาบเต็มขึ้น", see2_p:"น้ำจืดเติมเต็มแอ่ง – ทะเลสาบใหม่ก่อตัวขึ้นหน้าภูเขา",
     see3_h:"น้ำใสสะอาด", see3_p:"ไม่กี่สัปดาห์ต่อมา: ทะเลสาบสงบสำหรับว่ายน้ำ ตกปลา และพักผ่อน",
     see4_h:"พระอาทิตย์ตกของคุณ", see4_p:"แสงทองและวิวภูเขาทุกค่ำคืน – จากระเบียงบ้านคุณ",
-    proc_eye:"ขั้นตอน", proc_h2:"เข้าอยู่บ้านของคุณเองใน 2.5 เดือน",
+    proc_eye:"ขั้นตอน", proc_h2:"ตามสถานะปัจจุบัน พร้อมเข้าอยู่ในประมาณ 2.5 เดือน",
     proc_lead:"ตั้งแต่ปรึกษาครั้งแรกจนถึงส่งมอบกุญแจ – วางแผน ก่อสร้าง และส่งมอบครบวงจร",
     proc1_h:"ปรึกษาและเลือกแปลง", proc1_p:"เราพูดคุยความต้องการและเลือกแปลงริมทะเลสาบร่วมกัน ชมเสมือนจริงได้ทุกเมื่อ",
     proc2_h:"สัญญาและราคาคงที่", proc2_p:"ราคาคงที่โปร่งใส สัญญาชัดเจน รวมเอกสารวิศวกรรมและสถาปัตยกรรม",
-    proc3_h:"ก่อสร้างใน 2.5 เดือน", proc3_p:"บ้าน A-Frame ของคุณสร้างพร้อมกุญแจ – ห้องน้ำ ครัว และสาธารณูปโภคครบ",
+    proc3_h:"ก่อสร้างประมาณ 2.5 เดือน (ตามสถานะปัจจุบัน)", proc3_p:"บ้าน A-Frame ของคุณสร้างพร้อมกุญแจ – ห้องน้ำ ครัว และสาธารณูปโภคครบ",
     proc4_h:"ส่งมอบกุญแจ", proc4_p:"เลขที่บ้าน ที่อยู่ และทะเบียนบ้านเหลือง (ทะเบียนบ้าน) – เข้าอยู่เพียงหิ้วกระเป๋า",
     pc_eye:"เปรียบเทียบราคา", pc_h2:"ต่ำกว่าราคาตลาด 56% –<br>ข้อเสนอที่หาได้ยากมาก",
     pc_sub:'ราคาบ้านเฉลี่ย ปราณบุรี: <strong style="color:#F0D97A">6,495,817 บาท</strong>. ข้อเสนอครบชุดของเรา รวมที่ดินริมทะเลสาบ: <strong style="color:#7CDFA4">2,850,000 บาท</strong>',
     pc_market:"ราคาตลาดเฉลี่ยในพื้นที่", pm1:"มักไม่รวมสาธารณูปโภค", pm2:"ก่อสร้าง 12–18 เดือน", pm3:"ไม่รับประกันทำเลริมทะเลสาบ", pm4:"ค่าใช้จ่ายเพิ่มเติม 10–15%",
-    pc_ours:"A-Frames in Paradise", po1:"รวมที่ดิน 800 ม² ริมทะเลสาบ", po2:"ไฟฟ้า น้ำ อินเทอร์เน็ต", po3:"126 ม², 2 ชั้น, A-Frame", po4:"พร้อมกุญแจใน 2.5 เดือน",
+    pc_ours:"A-Frames in Paradise", po1:"รวมที่ดิน 800 ม² ริมทะเลสาบ", po2:"ไฟฟ้า น้ำ อินเทอร์เน็ต", po3:"126 ม², 2 ชั้น, A-Frame", po4:"ตามสถานะปัจจุบัน พร้อมเข้าอยู่ในประมาณ 2.5 เดือน",
     savings_p:"คุณประหยัดเมื่อเทียบกับราคาตลาดเฉลี่ย",
-    bd3_l:"ราคารวมทั้งหมด", bd4_l:"พร้อมเข้าอยู่ใน", bd4_m:"เดือน", bd4_n:"หลังเซ็นสัญญา",
+    bd3_l:"ราคารวมทั้งหมด", bd4_l:"พร้อมเข้าอยู่ ตามสถานะปัจจุบัน", bd4_m:"เดือน", bd4_n:"หลังเซ็นสัญญา",
     plot_eye:"แปลงที่ดิน", plot_h2:"เหลือที่ดินริมทะเลสาบเพียง 4 แปลง",
     plot_lead:"จองหนึ่งในสี่แปลงส่วนตัวในโครงการ AIP 2 – แต่ละแปลงติดทะเลสาบโดยตรงและเห็นวิวเขาสามร้อยยอด",
-    plot_avail:"ว่าง", plot_f2:"ติดทะเลสาบส่วนตัวโดยตรง", plot_f4:"วิวภูเขาเขาสามร้อยยอด", plot_f5:"แต่ละแปลงมีขนาดพื้นที่แตกต่างกัน", plot_f6:"วางระบบไฟฟ้า น้ำประปา และอินเทอร์เน็ตแล้ว",
+    plot_avail:"ว่าง", plot_rai:"ที่ดิน AFIP 9 ไร่ · ราคาต่อไร่ (1,600 ม²) = 2.8 ล้านบาท", plot_eur_note:"ราคายูโรเป็นค่าประมาณ ขึ้นอยู่กับอัตราแลกเปลี่ยนปัจจุบัน", plot_f2:"ติดทะเลสาบส่วนตัวโดยตรง", plot_f4:"วิวภูเขาเขาสามร้อยยอด", plot_f5:"แต่ละแปลงมีขนาดพื้นที่แตกต่างกัน", plot_f6:"วางระบบไฟฟ้า น้ำประปา และอินเทอร์เน็ตแล้ว",
     plot_box:"โครงการ AIP 2 · ปราณบุรี ประจวบคีรีขันธ์ · แปลง 1, 5, 6 และ 7 ว่าง",
     loc_eye:"ทำเล", loc_h2:"ปราณบุรี – ความลับที่ถูกซ่อนไว้ที่สุดของไทย",
     loc_lead:"ห่างตัวเมืองปราณบุรี 20 กม. สนามบินหัวหิน 42 กม. และกรุงเทพฯ ประมาณ 3.5 ชม. – และจะใกล้ขึ้นมากด้วยรถไฟความเร็วสูงที่วางแผนไว้",
@@ -1134,7 +1139,7 @@ const T = {
     f_status_alt:"ไม่มีอะไรเปิดขึ้น? คัดลอกข้อความคำขอแล้วส่งไปยังอีเมลของเรา – หรือโทรหาเรา",
     f_copy_label:"ข้อความคำขอของคุณ", f_copy:"คัดลอกข้อความคำขอ", f_copied:"✓ คัดลอกแล้ว", f_copy_manual:"กรุณาคัดลอกข้อความที่เลือกด้วยตนเอง",
     foot_desc:"บ้าน Eco-Luxury ริมทะเลสาบพร้อมกุญแจในปราณบุรี ไทย – สำหรับชาวต่างชาติและนักลงทุนระดับสากล",
-    foot_nav:"นำทาง", foot_contact:"ติดต่อ"
+    foot_nav:"นำทาง", foot_contact:"ติดต่อ", foot_price:"2,850,000 บาท · ประมาณ 75,000 € ขึ้นอยู่กับอัตราแลกเปลี่ยนปัจจุบัน · ที่ดินริมทะเลสาบ + A-Frame · พร้อมกุญแจ"
   }
 };
 

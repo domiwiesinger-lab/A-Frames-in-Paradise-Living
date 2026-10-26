@@ -221,7 +221,7 @@
     .lstep__img { border-radius:var(--r); overflow:hidden; aspect-ratio:3/4; box-shadow:0 12px 34px rgba(0,0,0,.4); }
     .lstep__img img { width:100%; height:100%; object-fit:cover; transition:transform .6s; }
     .lstep:hover .lstep__img img { transform:scale(1.06); }
-    .lstep__num { position:absolute; top:-14px; left:-6px; width:46px; height:46px; border-radius:50%; background:var(--gold); color:#fff; font-family:var(--serif); font-size:1.2rem; font-weight:700; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.4); }
+    .lstep__num { position:absolute; top:-14px; left:-6px; width:46px; height:46px; border-radius:50%; background:var(--gold); color:#fff; font-family:var(--serif); font-size:1.2rem; font-weight:700; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.4); z-index:2; }
     .lstep h3 { color:#fff; font-size:1.06rem; margin:1rem 0 .35rem; }
     .lstep p { font-size:.85rem; color:rgba(255,255,255,.66); line-height:1.6; }
 
@@ -569,7 +569,7 @@
     <div class="house-imgs fade">
       <div class="img-wrap"><img src="images/a-frames-fertig-teil-8.jpg" class="zoom" alt="A-Frame fertiggestellt" loading="lazy"/></div>
       <div class="img-wrap"><img src="images/see-top.png" class="zoom" alt="Luftaufnahme See mit A-Frames" loading="lazy"/></div>
-      <div class="img-wrap"><img src="images/construction.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
+      <div class="img-wrap"><img src="images/construction-2.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
     </div>
   </div>
 </section>
@@ -591,8 +591,8 @@
       </div>
       <div class="fade">
         <div class="land-imgs">
-          <div class="img-wrap"><img src="images/see-mit-palmen.jpg" class="zoom" alt="Privater See mit Palmen und Bergkulisse" loading="lazy"/></div>
-          <div class="img-wrap"><img src="images/mountain-view.jpg" class="zoom" alt="Bergblick über den See" loading="lazy"/></div>
+          <div class="img-wrap"><img src="images/a-frame-palm-1.jpg" class="zoom" alt="A-Frame am See mit Palmen und Bergkulisse" loading="lazy"/></div>
+          <div class="img-wrap"><img src="images/mountain-view-2.jpg" class="zoom" alt="Bergblick über den See" loading="lazy"/></div>
         </div>
       </div>
     </div>
@@ -786,11 +786,12 @@
     <div class="gallery fade">
       <div class="gal-item g-wide"><img src="images/hero.png" class="zoom" alt="A-Frame bei Nacht" loading="lazy"/></div>
       <div class="gal-item g-box"><img src="images/house-1.jpg" class="zoom" alt="A-Frame Frontansicht" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/construction.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/house-2.jpg" class="zoom" alt="A-Frame Seitenansicht" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/lake-sun.jpg" class="zoom" alt="See bei Sonnenaufgang" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/aerial.jpg" class="zoom" alt="Luftaufnahme der Anlage" loading="lazy"/></div>
-      <div class="gal-item g-std"><img src="images/wetlands.jpg" class="zoom" alt="Bueng Bua Feuchtgebiet" loading="lazy"/></div>
+      <div class="gal-item g-std"><img src="images/construction-2.jpg" class="zoom" alt="A-Frame im Bau" loading="lazy"/></div>
+      <div class="gal-item g-std"><img src="images/mountain-view-2.jpg" class="zoom" alt="Bergblick über den See" loading="lazy"/></div>
+      <div class="gal-item g-std"><img src="images/lake-a-frame.jpg" class="zoom" alt="A-Frame am See" loading="lazy"/></div>
+      <div class="gal-item g-std"><img src="images/a-frame-1.png" class="zoom" alt="A-Frame Ansicht" loading="lazy"/></div>
+      <div class="gal-item g-std"><img src="images/a-frame-2.png" class="zoom" alt="A-Frame mit Terrasse" loading="lazy"/></div>
+      <div class="gal-item g-std"><img src="images/a-frames-fertig-teil-8.jpg" class="zoom" alt="A-Frame fertiggestellt" loading="lazy"/></div>
     </div>
   </div>
 </section>
@@ -830,13 +831,13 @@
       <div class="ccard fade">
         <div class="ccard-icon">📧</div>
         <div class="ccard-lbl" data-i18n="cc1_l">E-Mail</div>
-        <div class="ccard-val"><a href="mailto:pawinee.ok15@gmail.com">pawinee.ok15@gmail.com</a></div>
+        <div class="ccard-val"><a href="mailto:pawinee.ok15@gmail.com" data-i18n="cc1_link">E-Mail schreiben</a></div>
         <div class="ccard-note" data-i18n="cc1_n">Antwort innerhalb 24 Stunden</div>
       </div>
       <div class="ccard fade">
         <div class="ccard-icon">📱</div>
         <div class="ccard-lbl" data-i18n="cc2_l">Telefon / WhatsApp</div>
-        <div class="ccard-val"><a href="tel:+66863523653">+66 86 352 3653</a></div>
+        <div class="ccard-val"><a href="tel:+66863523653" data-i18n="cc2_link">Jetzt anrufen</a></div>
         <div class="ccard-note" data-i18n="cc2_n">Khun Pawinee · Projektleitung</div>
       </div>
       <div class="ccard fade">
@@ -846,7 +847,8 @@
         <div class="ccard-note" data-i18n="cc3_n">Thailand · 20 km südlich von Hua Hin</div>
       </div>
     </div>
-    <div class="form-wrap fade">
+    <!-- Formular vorerst ausgeblendet (Revision 3) – Markup und JS bleiben erhalten -->
+    <div class="form-wrap fade" hidden>
       <h3 data-i18n="form_h">Angebot & Info anfordern</h3>
       <p data-i18n="form_sub">Hinterlasse deine Kontaktdaten – wir melden uns persönlich und unverbindlich.</p>
       <form onsubmit="handleForm(event)">
@@ -990,7 +992,7 @@ const T = {
     t2_text:'„Nach 15 Jahren als Digital Nomad wollte ich einen festen Hafen. Das A-Frame am See gibt mir Ruhe und das Wissen, in einen echten Hard Asset investiert zu haben. Absolut empfehlenswert für jeden Expat.“',
     cta_eye:"Bereit für dein Paradies?", cta_h2:"Sichere dir jetzt deinen<br>Festpreis – 2.850.000 THB",
     cta_lead:"Mit steigenden Baukosten ab 2027 ist das aktuelle Preisfenster zeitlich begrenzt. Nimm jetzt unverbindlich Kontakt auf.",
-    cc1_l:"E-Mail", cc1_n:"Antwort innerhalb 24 Stunden", cc2_l:"Telefon / WhatsApp", cc2_n:"Khun Pawinee · Projektleitung", cc3_l:"Standort", cc3_n:"Thailand · 20 km südlich von Hua Hin",
+    cc1_l:"E-Mail", cc1_link:"E-Mail schreiben", cc2_link:"Jetzt anrufen", cc1_n:"Antwort innerhalb 24 Stunden", cc2_l:"Telefon / WhatsApp", cc2_n:"Khun Pawinee · Projektleitung", cc3_l:"Standort", cc3_n:"Thailand · 20 km südlich von Hua Hin",
     form_h:"Angebot & Info anfordern", form_sub:"Hinterlasse deine Kontaktdaten – wir melden uns persönlich und unverbindlich.",
     f_fname:"Vorname", f_lname:"Nachname", f_email:"E-Mail", f_phone:"Telefon / WhatsApp", f_int:"Ich interessiere mich für …",
     fi_buy:"Kauf / Investition", fi_info:"Allgemeine Informationen", fi_view:"Virtuelle Besichtigung", fi_fin:"Finanzierungs-/Steuerberatung",
@@ -1060,7 +1062,7 @@ const T = {
     t2_text:'"After 15 years as a digital nomad I wanted a permanent base. The A-Frame by the lake gives me peace and the knowledge that I\'ve invested in a real hard asset. Highly recommended for any expat."',
     cta_eye:"Ready for your paradise?", cta_h2:"Lock in your fixed price now –<br>2,850,000 THB",
     cta_lead:"With construction costs rising from 2027, the current price window is time-limited. Get in touch today, with no obligation.",
-    cc1_l:"Email", cc1_n:"Reply within 24 hours", cc2_l:"Phone / WhatsApp", cc2_n:"Khun Pawinee · Project Manager", cc3_l:"Location", cc3_n:"Thailand · 20 km south of Hua Hin",
+    cc1_l:"Email", cc1_link:"Write an email", cc2_link:"Call now", cc1_n:"Reply within 24 hours", cc2_l:"Phone / WhatsApp", cc2_n:"Khun Pawinee · Project Manager", cc3_l:"Location", cc3_n:"Thailand · 20 km south of Hua Hin",
     form_h:"Request Offer & Info", form_sub:"Leave your details – we'll get back to you personally and without obligation.",
     f_fname:"First name", f_lname:"Last name", f_email:"Email", f_phone:"Phone / WhatsApp", f_int:"I'm interested in …",
     fi_buy:"Purchase / Investment", fi_info:"General information", fi_view:"Virtual viewing", fi_fin:"Financing / Tax advice",
@@ -1130,7 +1132,7 @@ const T = {
     t2_text:'"หลังจาก 15 ปีในฐานะ Digital Nomad ฉันอยากได้ฐานที่มั่นคง บ้าน A-Frame ริมทะเลสาบให้ความสงบและความรู้สึกว่าได้ลงทุนใน Hard Asset ที่แท้จริง แนะนำอย่างยิ่ง"',
     cta_eye:"พร้อมสำหรับสวรรค์ของคุณ?", cta_h2:"ล็อคราคาคงที่ตอนนี้ –<br>2,850,000 บาท",
     cta_lead:"ด้วยต้นทุนก่อสร้างที่สูงขึ้นตั้งแต่ปี 2570 หน้าต่างราคาปัจจุบันมีเวลาจำกัด ติดต่อเราวันนี้โดยไม่มีข้อผูกมัด",
-    cc1_l:"อีเมล", cc1_n:"ตอบกลับภายใน 24 ชั่วโมง", cc2_l:"โทรศัพท์ / WhatsApp", cc2_n:"คุณภาวิณี · ผู้จัดการโครงการ", cc3_l:"ที่ตั้ง", cc3_n:"ไทย · 20 กม. ทางใต้ของหัวหิน",
+    cc1_l:"อีเมล", cc1_link:"ส่งอีเมล", cc2_link:"โทรเลย", cc1_n:"ตอบกลับภายใน 24 ชั่วโมง", cc2_l:"โทรศัพท์ / WhatsApp", cc2_n:"คุณภาวิณี · ผู้จัดการโครงการ", cc3_l:"ที่ตั้ง", cc3_n:"ไทย · 20 กม. ทางใต้ของหัวหิน",
     form_h:"ขอรับข้อเสนอและข้อมูล", form_sub:"ฝากข้อมูลติดต่อ – เราจะติดต่อกลับเป็นการส่วนตัวโดยไม่มีข้อผูกมัด",
     f_fname:"ชื่อ", f_lname:"นามสกุล", f_email:"อีเมล", f_phone:"โทรศัพท์ / WhatsApp", f_int:"ฉันสนใจ …",
     fi_buy:"ซื้อ / ลงทุน", fi_info:"ข้อมูลทั่วไป", fi_view:"ชมเสมือนจริง", fi_fin:"คำปรึกษาด้านการเงิน/ภาษี",
